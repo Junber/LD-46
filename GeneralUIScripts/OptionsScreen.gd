@@ -18,17 +18,23 @@ onready var musicSlider = $VBoxContainer/SettingsContainer/GridContainer/MusicSl
 onready var sfxSlider = $VBoxContainer/SettingsContainer/GridContainer/SoundeffectsSlider
 
 onready var start_resolution = get_node("/root/Main").start_resolution
+var should_be_fullscreen := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
+	if OS.get_name() == "HTML5":
+		resolutionButton.disabled = true
 	set_resolution_options()
-	initialze_resolution_setting()
+	initialze_setting()
 	load_options()
 
-func initialze_resolution_setting():
-	resolutionButton.select(start_resolution)
-	OS.set_window_size(resolutions[start_resolution])
+func initialze_setting():
+	if OS.get_name() != "HTML5":
+		resolutionButton.select(start_resolution)
+		OS.set_window_size(resolutions[start_resolution])
+	set_volume("Music", 100)
+	set_volume("SoundEffects", 100)
 
 func set_resolution_button_to_current_resolution():
 	var resolutionIndex = resolutions.find(OS.get_window_size())
@@ -91,14 +97,18 @@ func save_options():
 func load_options():
 	var saveFile = File.new()
 	if not saveFile.file_exists(optionsFileName):
+		OS.set_window_fullscreen(true)
 		return
 
 	saveFile.open(optionsFileName, File.READ)
 	var optionsData = parse_json(saveFile.get_line())
 	
 	if optionsData.has("fullscreen"):
+		should_be_fullscreen = optionsData["fullscreen"]
 		OS.set_window_fullscreen(optionsData["fullscreen"])
-	if optionsData.has("resolution_x") and optionsData.has("resolution_y"):
+	else:
+		OS.set_window_fullscreen(true)
+	if OS.get_name() != "HTML5" and optionsData.has("resolution_x") and optionsData.has("resolution_y"):
 		var size = Vector2(optionsData["resolution_x"], optionsData["resolution_y"])
 		OS.set_window_size(size)
 	if optionsData.has("music_volume"):
@@ -111,10 +121,12 @@ func _on_BackButton_pressed():
 	emit_signal("button_pressed")
 
 func _on_FullscreenToggle_toggled(button_pressed):
+	should_be_fullscreen = button_pressed
 	OS.set_window_fullscreen(button_pressed)
 	emit_signal("button_pressed")
 	
-	resolutionButton.set_disabled(button_pressed)
+	if OS.get_name() != "HTML5":
+		resolutionButton.set_disabled(button_pressed)
 	set_resolution_button_to_current_resolution()
 
 func _on_ResolutionButton_item_selected(id):
@@ -126,3 +138,12 @@ func _on_MusicSlider_value_changed(value):
 
 func _on_SoundeffectsSlider_value_changed(value):
 	set_volume("SoundEffects", value)
+
+func _input(event):
+	if OS.get_name() == "HTML5":
+		if event.has_method("is_pressed") and !event.is_pressed():
+			return
+		if event is InputEventKey and event.scan_code in [KEY_CONTROL, KEY_SHIFT, KEY_ALT]:
+			return
+		if should_be_fullscreen and !OS.window_fullscreen:
+			OS.set_window_fullscreen(true)

@@ -23,7 +23,7 @@ onready var spawnPositionLeft = $EnemySpawnPosition1
 onready var spawnPositionRight = $EnemySpawnPosition2
 
 export (int) var minX = 5
-export (int) var maxX = 65
+export (int) var maxX = 64
 
 var enemySpeed = 2.0
 var enemyBulletSpeed = 15.0
@@ -40,6 +40,7 @@ func spawn_enemy():
 	var enemy = enemyScenes[randi() % enemyScenes.size()].instance()
 	enemy.position = spawnPositionLeft.position.linear_interpolate(spawnPositionRight.position, randf())
 	enemy.position.x -= fmod(enemy.position.x, 5.0)
+	enemy.position.x = round(enemy.position.x)
 	enemy.connect("death", self, "_on_Enemy_death")
 	add_child(enemy)
 	enemy.set_speed(enemySpeed)
@@ -65,7 +66,7 @@ func shoot():
 	if shootTimer.is_stopped():
 		shootTimer.start()
 		var bullet = bulletScene.instance()
-		bullet.position = player.position
+		bullet.position = player.position - Vector2(2, 0)
 		add_child(bullet)
 
 func pause():

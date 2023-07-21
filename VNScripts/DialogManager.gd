@@ -130,6 +130,9 @@ func print_current_dialog_line():
 		emit_signal("game_ended")
 		return
 	
+	for child in choiceButtonContainer.get_children():
+		child.queue_free()
+	
 	var currentData = get_current_dialog_data()
 	
 	execute_print_side_effects(currentData)
@@ -209,9 +212,6 @@ func pick_choice(choice):
 		dialogChoices.push_back(choice)
 		dataPosition.push_back(0)
 		maxDataPosition.push_back(currentData["choices"][choice]["next"].size())
-		
-		for child in choiceButtonContainer.get_children():
-			child.queue_free()
 		
 		inChoice = false
 		emit_signal("button_pressed")

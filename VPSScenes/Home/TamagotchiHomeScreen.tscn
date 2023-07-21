@@ -26,7 +26,6 @@ script = ExtResource( 20 )
 
 [node name="UIContainer" parent="." instance=ExtResource( 2 )]
 margin_bottom = 17.0
-rect_scale = Vector2( 1, 1 )
 
 [node name="NormalSprites" type="Node2D" parent="."]
 
@@ -62,6 +61,7 @@ animation = "hatch"
 
 [node name="AnimationTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="switch_to_pet" from="." to="UIContainer" method="_on_HomeScreen_switch_to_pet"]
 [connection signal="switch_to_sick" from="." to="UIContainer" method="_on_HomeScreen_switch_to_sick"]
 [connection signal="animation_finished" from="HatchSprite" to="." method="_on_HatchSprite_animation_finished"]

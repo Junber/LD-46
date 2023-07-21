@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://VPSScenes/Minigame/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://VPSScripts/Minigame/TamagotchiMinigameScreen.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Resources/Graphics/Minigame/UI/exit_icon.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Graphics/Minigame/UI/right_arrow.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Fonts/joystix.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.81548, 71.3524 )
@@ -16,18 +17,13 @@ extents = Vector2( 7.81548, 71.3524 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 45.4281, 10 )
 
-[node name="MinigameScreen" type="Container" groups=[
-"minigame_objects",
-]]
+[node name="MinigameScreen" type="Container" groups=["minigame_objects"]]
 margin_left = 3.0
-margin_top = 4.96435
+margin_top = 5.0
 margin_right = 67.0
-margin_bottom = 75.9644
+margin_bottom = 76.0001
 rect_clip_content = true
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Left" type="Sprite" parent="."]
 position = Vector2( 6, 1 )
@@ -76,7 +72,7 @@ margin_bottom = 6.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 30.2271, 24.2481 )
+position = Vector2( 30, 24 )
 scale = Vector2( 1, 1 )
 
 [node name="EnemySpawnPosition1" type="Position2D" parent="."]
@@ -123,17 +119,20 @@ one_shot = true
 position = Vector2( 31.1977, 75.4453 )
 
 [node name="ScoreLabel" type="Label" parent="."]
+material = ExtResource( 10 )
 anchor_left = 0.837
 anchor_top = 0.096
 anchor_right = 0.925
 anchor_bottom = 0.15
-margin_right = 40.0
-margin_bottom = 14.0
-rect_scale = Vector2( 0.1, 0.1 )
-custom_fonts/font = ExtResource( 9 )
+margin_left = -11.568
+margin_top = 0.183995
+margin_right = -1.2
+margin_bottom = 8.34999
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 align = 2
+
 [connection signal="area_entered" from="Player" to="." method="_on_Player_area_entered"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 [connection signal="timeout" from="DifficultyIncreaseTimer" to="." method="_on_DifficultyIncreaseTimer_timeout"]

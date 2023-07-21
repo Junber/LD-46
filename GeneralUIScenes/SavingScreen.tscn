@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://VNTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/Graphics/GeneralUI/menu_background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GeneralUIScripts/SavingScreen.gd" type="Script" id=4]
 [ext_resource path="res://Resources/Fonts/orange-kid_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://GeneralUIScenes/PopupPanel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -21,7 +22,6 @@ expand = true
 stretch_mode = 7
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -44,6 +44,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
+material = ExtResource( 7 )
 margin_right = 1200.0
 margin_bottom = 97.0
 custom_fonts/font = SubResource( 1 )
@@ -62,6 +63,7 @@ custom_constants/margin_right = 20
 custom_constants/margin_left = 50
 
 [node name="Label" type="Label" parent="VBoxContainer/ExplanationContainer"]
+material = ExtResource( 7 )
 margin_left = 50.0
 margin_right = 1180.0
 margin_bottom = 61.0
@@ -77,11 +79,13 @@ custom_constants/margin_right = 27
 custom_constants/margin_left = 50
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
+material = ExtResource( 7 )
 margin_left = 50.0
 margin_right = 1173.0
 margin_bottom = 117.0
 clear_button_enabled = true
 placeholder_text = "Save name"
+placeholder_alpha = 1.0
 
 [node name="ListContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 362.0
@@ -94,6 +98,7 @@ __meta__ = {
 }
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer/ListContainer"]
+material = ExtResource( 7 )
 margin_left = 50.0
 margin_right = 1170.0
 margin_bottom = 300.0
@@ -122,6 +127,7 @@ margin_right = 1170.0
 margin_bottom = 173.0
 
 [node name="SaveButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
+material = ExtResource( 7 )
 margin_right = 564.0
 margin_bottom = 157.0
 size_flags_horizontal = 3
@@ -129,6 +135,7 @@ size_flags_vertical = 3
 text = "Save"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
+material = ExtResource( 7 )
 margin_left = 568.0
 margin_right = 1133.0
 margin_bottom = 157.0
@@ -141,7 +148,7 @@ __meta__ = {
 }
 
 [node name="PopupPanel" parent="." instance=ExtResource( 6 )]
-visible = false
+
 [connection signal="text_entered" from="VBoxContainer/MarginContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="item_activated" from="VBoxContainer/ListContainer/ItemList" to="." method="_on_ItemList_item_activated"]
 [connection signal="item_selected" from="VBoxContainer/ListContainer/ItemList" to="." method="_on_ItemList_item_selected"]

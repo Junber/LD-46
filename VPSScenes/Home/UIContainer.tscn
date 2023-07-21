@@ -16,11 +16,7 @@
 [node name="UIContainer" type="MarginContainer"]
 margin_right = 72.0
 margin_bottom = 16.0
-rect_scale = Vector2( 0.924281, 0.924281 )
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -29,45 +25,42 @@ margin_bottom = 87.0
 texture = ExtResource( 11 )
 
 [node name="FullnessUI" type="Node2D" parent="."]
-position = Vector2( 8.65538, 8.65538 )
+position = Vector2( 9, 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="FullnessUI"]
-margin_left = -3.66155
-margin_top = -2.30542
-margin_right = 10.3384
-margin_bottom = 2.69458
+margin_left = -4.0
+margin_top = -2.0
+margin_right = 10.0
+margin_bottom = 3.0
+step = 20.0
 value = 100.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 fill_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AwakenessUI" type="Node2D" parent="."]
-position = Vector2( 43.2769, 8.65538 )
+position = Vector2( 43, 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="AwakenessUI"]
-margin_left = -21.3817
-margin_top = -2.97942
-margin_right = -8.38171
-margin_bottom = 3.02058
+margin_left = -21.0
+margin_top = -3.0
+margin_right = -8.0
+margin_bottom = 3.0
+step = 16.0
 value = 100.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 2 )
 fill_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FunUI" type="Node2D" parent="."]
-position = Vector2( 77.8984, 8.65538 )
+position = Vector2( 77, 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="FunUI"]
-margin_left = -38.7426
-margin_top = -2.39189
-margin_right = -25.7426
-margin_bottom = 2.60811
+margin_left = -38.0
+margin_top = -2.0
+margin_right = -25.0
+margin_bottom = 3.0
+step = 20.0
 value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 1 )
@@ -77,13 +70,14 @@ __meta__ = {
 }
 
 [node name="PetHappinessUI" type="Node2D" parent="."]
-position = Vector2( 113.602, 8.65538 )
+position = Vector2( 113, 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="PetHappinessUI"]
-margin_left = -56.9845
-margin_top = -2.16508
-margin_right = -45.9845
-margin_bottom = 2.83492
+margin_left = -57.0
+margin_top = -2.0
+margin_right = -46.0
+margin_bottom = 3.0
+step = 20.0
 value = 100.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 9 )
@@ -94,13 +88,14 @@ __meta__ = {
 
 [node name="SickHappinessUI" type="Node2D" parent="."]
 visible = false
-position = Vector2( 112.52, 8.65538 )
+position = Vector2( 111, 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="SickHappinessUI"]
 margin_left = -55.0
 margin_top = -3.0
 margin_right = -49.0
 margin_bottom = 3.0
+step = 20.0
 value = 100.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 10 )

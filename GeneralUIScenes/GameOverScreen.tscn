@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GeneralUIScripts/GameOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/GeneralUI/gameover_alt.png" type="Texture" id=2]
 [ext_resource path="res://VNTheme.tres" type="Theme" id=3]
-
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=4]
 
 [node name="GameOverScreen" type="TextureRect"]
 pause_mode = 2
@@ -29,6 +29,7 @@ __meta__ = {
 }
 
 [node name="RestartButton" type="Button" parent="ButtonContainer"]
+material = ExtResource( 4 )
 margin_right = 1183.0
 margin_bottom = 157.0
 size_flags_horizontal = 3
@@ -41,6 +42,7 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
+material = ExtResource( 4 )
 margin_top = 164.0
 margin_right = 1183.0
 margin_bottom = 321.0
@@ -55,6 +57,7 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+
 [connection signal="gui_input" from="." to="." method="_on_GameOverScreen_gui_input"]
 [connection signal="pressed" from="ButtonContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -11,6 +11,8 @@ signal button_pressed()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
+	if OS.get_name() == "HTML5":
+		$MarginContainer/VBoxContainer/QuitButton.disabled = true
 
 func popup():
 	visible = true

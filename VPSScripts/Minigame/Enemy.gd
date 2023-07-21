@@ -6,16 +6,20 @@ var paused: bool = false
 var speed: float = 2.0
 var bulletSpeed: float = 15.0
 
+var real_position: float
+
 export(PackedScene) var bulletScene = preload("res://VPSScenes/Minigame/EnemyBullet.tscn")
 onready var bulletTimer = $BulletTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	real_position = position.y
 	pass
 
 func _process(delta):
 	if not paused:
-		position.y -= delta * speed
+		real_position -= delta * speed
+		position.y = round(real_position)
 
 func set_speed(newSpeed):
 	speed = newSpeed

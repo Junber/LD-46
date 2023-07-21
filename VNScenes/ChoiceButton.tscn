@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/Fonts/orange-kid.tres" type="DynamicFont" id=2]
 [ext_resource path="res://VNScripts/ChoiceButton.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Fonts/orange-kid-bold.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Resources/Fonts/orange-kid-italics.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=5]
 [ext_resource path="res://Resources/Graphics/VNUI/character_choice_button_pressed.png" type="Texture" id=6]
 [ext_resource path="res://VNScripts/Label.gd" type="Script" id=7]
 
@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="Label" type="RichTextLabel" parent="."]
+material = ExtResource( 5 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -78.5
@@ -30,15 +31,16 @@ rect_scale = Vector2( 0.05, 0.05 )
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/italics_font = ExtResource( 5 )
+custom_colors/default_color = Color( 0.784314, 0.784314, 0.784314, 1 )
 custom_fonts/bold_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 2 )
-custom_colors/default_color = Color( 0.784314, 0.784314, 0.784314, 1 )
 bbcode_enabled = true
+text = "Test"
 scroll_active = false
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="." to="Label" method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="." to="Label" method="_on_Button_mouse_exited"]

@@ -5,7 +5,7 @@ signal switch_to_sick
 
 var currentIdleAnimation = "idle"
 
-export(float) var animationLength = 2
+export(float) var animationLength = 2.0
 
 onready var animationTimer = $AnimationTimer
 

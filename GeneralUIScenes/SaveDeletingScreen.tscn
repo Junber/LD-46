@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://VNTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/Graphics/GeneralUI/menu_background.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/orange-kid.regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://GeneralUIScripts/SaveDeletingScreen.gd" type="Script" id=4]
 [ext_resource path="res://GeneralUIScenes/PopupPanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -20,7 +21,6 @@ expand = true
 stretch_mode = 7
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
+material = ExtResource( 6 )
 margin_right = 1200.0
 margin_bottom = 121.0
 custom_fonts/font = SubResource( 1 )
@@ -64,6 +65,7 @@ __meta__ = {
 }
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer/ListContainer"]
+material = ExtResource( 6 )
 margin_left = 50.0
 margin_right = 1170.0
 margin_bottom = 449.0
@@ -91,6 +93,7 @@ margin_right = 1170.0
 margin_bottom = 173.0
 
 [node name="LoadButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
+material = ExtResource( 6 )
 margin_right = 564.0
 margin_bottom = 157.0
 size_flags_horizontal = 3
@@ -98,6 +101,7 @@ size_flags_vertical = 3
 text = "Delete"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
+material = ExtResource( 6 )
 margin_left = 568.0
 margin_right = 1133.0
 margin_bottom = 157.0
@@ -110,6 +114,7 @@ __meta__ = {
 }
 
 [node name="PopupPanel" parent="." instance=ExtResource( 5 )]
+
 [connection signal="item_activated" from="VBoxContainer/ListContainer/ItemList" to="." method="_on_ItemList_item_activated"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/HBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

@@ -3,6 +3,7 @@ extends MarginContainer
 func _ready():
 	$SickHappinessUI.visible = false
 	$PetHappinessUI.visible = true
+	$AwakenessUI/TextureProgress.step = 100.0 / 6.0
 
 func _on_HomeScreen_switch_to_pet():
 	$SickHappinessUI.visible = false

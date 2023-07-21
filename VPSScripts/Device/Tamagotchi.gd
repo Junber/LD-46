@@ -50,13 +50,13 @@ var awakeness: float = 100 setget set_awakeness
 var fun: float = 100 setget set_fun
 var happiness: float = 100 setget set_happiness
 
-var needDecay: float = 0
+var needDecay := 0.0
 
-var highScore: int = 0 setget update_high_score
+var highScore := 0 setget update_high_score
 
-export(float) var needDecayPerSecond: float = 1
-export(float) var needGain = 10
-export(int) var minimumNeedAfterDialog: int = 15
+export(float) var needDecayPerSecond := 1.0
+export(float) var needGain = 10.0
+export(int) var minimumNeedAfterDialog = 15
 
 const minigameScreenScene = preload("res://VPSScenes/Minigame/TamagotchiMinigameScreen.tscn")
 onready var minigameScreen = $Screen/MinigameScreen
@@ -120,7 +120,7 @@ func set_sleeping(newState):
 		emit_signal("end_sleeping")
 
 func toggle_sleep():
-	if is_satisfied(awakeness) and not sleeping:
+	if is_satisfied(awakeness, 16) and not sleeping:
 		emit_signal("refuse")
 	else:
 		set_sleeping(not sleeping)
@@ -147,7 +147,7 @@ func set_happiness(newHappiness):
 	react_to_low_needs()
 
 func change_fullness(amount, minValue = 0):
-	if amount > 0 and is_satisfied(fullness):
+	if amount > 0 and is_satisfied(fullness, 20):
 		emit_signal("refuse")
 	else:
 		if amount > 0:
@@ -155,17 +155,17 @@ func change_fullness(amount, minValue = 0):
 		set_fullness(clamp(fullness + amount, min(minValue, fullness), 100))
 
 func change_awakeness(amount, minValue = 0):
-	if amount > 0 and is_satisfied(awakeness):
+	if amount > 0 and is_satisfied(awakeness, 16):
 		toggle_sleep()
 	else:
 		set_awakeness(clamp(awakeness + amount, min(minValue, awakeness), 100))
 
 func change_fun(amount, minValue = 0):
-	if amount < 0 or not is_satisfied(fun):
+	if amount < 0 or not is_satisfied(fun, 20):
 		set_fun(clamp(fun + amount, min(minValue, fun), 100))
 
 func change_happiness(amount, minValue = 0):
-	if amount > 0 and is_satisfied(happiness):
+	if amount > 0 and is_satisfied(happiness, 20):
 		emit_signal("refuse")
 	else:
 		if amount > 0:
@@ -214,8 +214,8 @@ func change_stage_to(newStage):
 		emit_signal("hatch")
 	change_stage_to_without_animation(newStage)
 	
-func is_satisfied(need) -> bool:
-	if need >= 100:
+func is_satisfied(need, step) -> bool:
+	if need >= 100 - step / 2:
 		return true
 	return false
 

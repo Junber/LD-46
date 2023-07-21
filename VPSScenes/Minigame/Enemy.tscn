@@ -6,9 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.49815, 2.00542 )
 
-[node name="Enemy" type="Area2D" groups=[
-"minigame_objects",
-]]
+[node name="Enemy" type="Area2D" groups=["minigame_objects"]]
 collision_layer = 2
 collision_mask = 21
 script = ExtResource( 2 )
@@ -22,5 +20,6 @@ shape = SubResource( 1 )
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]

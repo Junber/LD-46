@@ -77,6 +77,7 @@ enabled_focus_mode = 0
 [node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = "SoundEffects"
 script = ExtResource( 2 )
+
 [connection signal="button_pressed" from="." to="ButtonAudioPlayer" method="_on_Tamagotchi_button_pressed"]
 [connection signal="eat" from="." to="Screen" method="_on_Tamagotchi_eat"]
 [connection signal="end_sleeping" from="." to="Screen" method="_on_Tamagotchi_end_sleeping"]

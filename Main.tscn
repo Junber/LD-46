@@ -28,15 +28,11 @@
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="CharacterView" parent="." groups=[
-"Persistent",
-] instance=ExtResource( 5 )]
+[node name="CharacterView" parent="." groups=["Persistent"] instance=ExtResource( 5 )]
 position = Vector2( 360, 2.38419e-07 )
 scale = Vector2( 5, 5 )
 
-[node name="Tamagotchi" parent="." groups=[
-"Persistent",
-] instance=ExtResource( 2 )]
+[node name="Tamagotchi" parent="." groups=["Persistent"] instance=ExtResource( 2 )]
 scale = Vector2( 5, 5 )
 needDecayPerSecond = 0.25
 
@@ -48,9 +44,7 @@ scale = Vector2( 5, 5 )
 position = Vector2( 360, 435 )
 scale = Vector2( 5, 5 )
 
-[node name="DialogManager" type="Node" parent="." groups=[
-"Persistent",
-]]
+[node name="DialogManager" type="Node" parent="." groups=["Persistent"]]
 script = ExtResource( 6 )
 startFileName = "res://Resources/Dialog/dialogue.json"
 
@@ -74,9 +68,6 @@ margin_bottom = 135.0
 rect_scale = Vector2( 5, 5 )
 texture = ExtResource( 18 )
 script = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartMenuScreen" parent="." instance=ExtResource( 16 )]
 pause_mode = 2
@@ -119,6 +110,7 @@ pause_mode = 2
 stream = ExtResource( 20 )
 bus = "SoundEffects"
 script = ExtResource( 19 )
+
 [connection signal="new_chapter" from="." to="ChapterScreen" method="_on_Main_new_chapter"]
 [connection signal="eat" from="Tamagotchi" to="DialogManager" method="_on_Tamagotchi_eat"]
 [connection signal="tamagotchi_died" from="Tamagotchi" to="." method="_on_Tamagotchi_tamagotchi_died"]
@@ -160,8 +152,8 @@ script = ExtResource( 19 )
 [connection signal="SaveButton_pressed" from="MenuScreen" to="." method="_on_MenuScreen_SaveButton_pressed"]
 [connection signal="button_pressed" from="MenuScreen" to="MenuButtonPlayer" method="_on_MenuScreen_button_pressed"]
 [connection signal="gui_input" from="StartScreen" to="StartScreen" method="_on_StartScreen_gui_input"]
-[connection signal="hide_screen" from="StartScreen" to="MenuButtonPlayer" method="_on_StartScreen_hide_screen"]
 [connection signal="hide_screen" from="StartScreen" to="." method="_on_StartScreen_hide_screen"]
+[connection signal="hide_screen" from="StartScreen" to="MenuButtonPlayer" method="_on_StartScreen_hide_screen"]
 [connection signal="DeleteButton_pressed" from="StartMenuScreen" to="." method="_on_StartMenuScreen_DeleteButton_pressed"]
 [connection signal="LoadButton_pressed" from="StartMenuScreen" to="." method="_on_StartMenuScreen_LoadButton_pressed"]
 [connection signal="OptionsButton_pressed" from="StartMenuScreen" to="." method="_on_MenuScreen_OptionsButton_pressed"]

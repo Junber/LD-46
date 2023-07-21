@@ -20,12 +20,13 @@ __meta__ = {
 }
 
 [node name="MinigameScreen" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="HomeScreen" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 4 )]
 visible = false
+
 [connection signal="eat" from="." to="HomeScreen" method="_on_Screen_eat"]
 [connection signal="end_sleeping" from="." to="HomeScreen" method="_on_Screen_end_sleeping"]
 [connection signal="end_talking" from="." to="HomeScreen" method="_on_Screen_end_talking"]

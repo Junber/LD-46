@@ -20,4 +20,5 @@ shape = SubResource( 1 )
 [node name="MoreBulletsTimer" type="Timer" parent="." index="2"]
 wait_time = 2.0
 autostart = true
+
 [connection signal="timeout" from="MoreBulletsTimer" to="." method="_on_MoreBulletsTimer_timeout"]

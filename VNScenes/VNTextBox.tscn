@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://VNScripts/VNTextBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/VNUI/character_dialogue.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/orange-kid.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Resources/Fonts/orange-kid-bold.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Resources/Fonts/orange-kid-italics.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Resources/Fonts/orange-kid.regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+size = 160
+outline_size = 10
+outline_color = Color( 0.211765, 0.568627, 0.658824, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform bool all_colors = false;
+uniform float threshold = 0.75;
+
+void fragment(){
+	COLOR *= texture(TEXTURE, UV);
+	if (all_colors || (COLOR.r == COLOR.g && COLOR.g == COLOR.b && COLOR.r > 0.62)) { // Hack to only alpha-scissor the text on buttons
+		COLOR.a = step(threshold, COLOR.a);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/all_colors = true
+shader_param/threshold = 1.0
 
 [node name="VNTextBox" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,47 +39,40 @@ margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
+material = ExtResource( 7 )
 margin_left = 18.0
 margin_top = 13.0
 margin_right = 3308.0
 margin_bottom = 681.0
 rect_scale = Vector2( 0.04, 0.04 )
 mouse_filter = 2
-custom_fonts/italics_font = ExtResource( 5 )
+custom_fonts/italics_font = SubResource( 3 )
 custom_fonts/bold_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Test"
-text = "Test"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+bbcode_text = "[i] Today is my last day with me mom [/i] Test"
+text = " Today is my last day with me mom  Test"
 
 [node name="NameLabel" type="RichTextLabel" parent="TextBox"]
+material = SubResource( 5 )
 margin_left = 18.0
 margin_top = 3.0
-margin_right = 2503.0
-margin_bottom = 198.0
-rect_scale = Vector2( 0.05, 0.05 )
+margin_right = 518.0
+margin_bottom = 53.0
+rect_scale = Vector2( 0.2, 0.2 )
 mouse_filter = 2
-custom_fonts/italics_font = ExtResource( 5 )
+custom_colors/default_color = Color( 0.847059, 0.847059, 0.45098, 1 )
 custom_fonts/bold_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.847059, 0.847059, 0.45098, 1 )
 bbcode_enabled = true
-bbcode_text = "[b]Person:[/b]"
-text = "Person:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+bbcode_text = "[b]Mom:[/b]"
+text = "Mom:"
 
 [node name="ShowTextTimer" type="Timer" parent="."]
 process_mode = 0
 wait_time = 0.02
 one_shot = true
+
 [connection signal="timeout" from="ShowTextTimer" to="." method="_on_ShowTextTimer_timeout"]

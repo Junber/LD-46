@@ -87,9 +87,9 @@ func set_currentCharacterNames(newCharacterNames):
 	add_characters(newCharacterNames)
 
 func get_backgroundName():
-	for backgroundName in backgroundMap:
-		if backgroundMap[backgroundName].visible:
-			return backgroundName
+	for potentialBackgroundName in backgroundMap:
+		if backgroundMap[potentialBackgroundName].visible:
+			return potentialBackgroundName
 	return "black"
 	
 func set_backgroundName(newBackgroundName):

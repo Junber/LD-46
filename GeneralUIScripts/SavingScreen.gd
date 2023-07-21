@@ -73,8 +73,7 @@ func _on_BackButton_pressed():
 	emit_signal("backButton_pressed")
 	emit_signal("button_pressed")
 
-# warning-ignore:unused_argument
-func _on_LineEdit_text_entered(newText):
+func _on_LineEdit_text_entered(_newText):
 	save()
 	emit_signal("button_pressed")
 
@@ -86,6 +85,6 @@ func _on_SaveButton_pressed():
 	emit_signal("button_pressed")
 
 
-func _on_ItemList_item_activated(index):
+func _on_ItemList_item_activated(_index):
 	save()
 	emit_signal("button_pressed")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Graphics/GeneralUI/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://VNTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=3]
 [ext_resource path="res://GeneralUIScripts/MenuScreen.gd" type="Script" id=4]
 
 [node name="MenuScreen" type="TextureRect"]
@@ -60,6 +61,7 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_right = 952.0
 margin_bottom = 157.0
 size_flags_horizontal = 3
@@ -69,6 +71,7 @@ text = "Continue"
 expand_icon = true
 
 [node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 161.0
 margin_right = 952.0
 margin_bottom = 318.0
@@ -81,6 +84,7 @@ __meta__ = {
 }
 
 [node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 322.0
 margin_right = 952.0
 margin_bottom = 479.0
@@ -93,6 +97,7 @@ __meta__ = {
 }
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 483.0
 margin_right = 952.0
 margin_bottom = 640.0
@@ -105,6 +110,7 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 644.0
 margin_right = 952.0
 margin_bottom = 801.0
@@ -118,6 +124,7 @@ __meta__ = {
 }
 
 [node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 805.0
 margin_right = 952.0
 margin_bottom = 962.0
@@ -131,16 +138,19 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+material = ExtResource( 3 )
 margin_top = 966.0
 margin_right = 952.0
 margin_bottom = 1123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
+disabled = true
 text = "Quit to Desktop"
 __meta__ = {
 "_editor_description_": ""
 }
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]

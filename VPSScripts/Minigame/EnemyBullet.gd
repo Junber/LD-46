@@ -2,20 +2,22 @@ extends Area2D
 
 var paused: bool = false
 var velocity: Vector2
+var real_position: Vector2
 
 func _ready():
-	pass
+	real_position = position
 
 
 func _process(delta):
 	if not paused:
 		move(delta)
+		position = Vector2(round(real_position.x), round(real_position.y))
 
 func set_velocity(newVelocity):
 	velocity = newVelocity
 
 func move(delta):
-	position += delta * velocity
+	real_position += delta * velocity
 
 func pause():
 	paused = true
