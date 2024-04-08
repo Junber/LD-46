@@ -3,17 +3,17 @@ extends PopupPanel
 signal ok_button_pressed()
 signal abort_button_pressed()
 
-onready var titleLabel = $VBoxContainer/Label
-onready var textLabel = $VBoxContainer/MarginContainer/MessageLabel
-onready var okButton = $VBoxContainer/ButtonMarginContainer/HBoxContainer/OkButton
-onready var abortButton = $VBoxContainer/ButtonMarginContainer/HBoxContainer/AbortButton
-onready var timer = $Timer
+@onready var titleLabel = $VBoxContainer/Label
+@onready var textLabel = $VBoxContainer/MarginContainer/MessageLabel
+@onready var okButton = $VBoxContainer/ButtonMarginContainer/HBoxContainer/OkButton
+@onready var abortButton = $VBoxContainer/ButtonMarginContainer/HBoxContainer/AbortButton
+@onready var timer = $Timer
 
 func _ready():
 	abortButton.visible = false
-	
-func set_title(title: String):
-	titleLabel.text = title
+
+func set_custom_title(custom_title: String):
+	titleLabel.text = custom_title
 
 func set_text(text: String):
 	textLabel.text = text
@@ -32,9 +32,6 @@ func show_ok_button():
 
 func show_abort_button():
 	abortButton.visible = true
-
-func hide():
-	self.visible = false
 
 func _on_Timer_timeout():
 	hide()

@@ -2,15 +2,15 @@
 
 [ext_resource path="res://VPSScenes/Minigame/EnemyBullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://VPSScripts/Minigame/EnemyBulletSpawning.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Graphics/Minigame/Player/player_shot.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Graphics/Minigame/Player/player_shot.png" type="Texture2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.46186, 1.45286 )
+size = Vector2( 1.46186, 1.45286 )
 
 [node name="EnemyBullet" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]

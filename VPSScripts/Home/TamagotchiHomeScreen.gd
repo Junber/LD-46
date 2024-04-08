@@ -5,11 +5,11 @@ signal switch_to_sick
 
 var currentIdleAnimation = "idle"
 
-export(float) var animationLength = 2.0
+@export var animationLength: float = 2.0
 
-onready var animationTimer = $AnimationTimer
+@onready var animationTimer = $AnimationTimer
 
-onready var allSprites = [
+@onready var allSprites = [
 	$NormalSprites/BabySprite,
 	$NormalSprites/AdultSprite,
 	$NormalSprites/OldSprite]

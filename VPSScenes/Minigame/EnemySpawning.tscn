@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://VPSScenes/Minigame/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Graphics/Minigame/Enemies/enemy_4.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Minigame/Enemies/enemy_4.png" type="Texture2D" id=2]
 [ext_resource path="res://VPSScenes/Minigame/EnemyBulletSpawning.tscn" type="PackedScene" id=3]
 
 [node name="Enemy" instance=ExtResource( 1 )]
 bulletScene = ExtResource( 3 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource( 2 )

@@ -1,115 +1,123 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=3 uid="uid://dvgh5h5g1aw41"]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://VPSScenes/Device/Tamagotchi.tscn" type="PackedScene" id=2]
-[ext_resource path="res://VNScenes/VNTextBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://VPSScenes/Textbox/TamagotchiTextBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://VNScenes/CharacterView.tscn" type="PackedScene" id=5]
-[ext_resource path="res://VNScripts/DialogManager.gd" type="Script" id=6]
-[ext_resource path="res://GeneralUIScenes/GameOverScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://VNScenes/ChapterScreen.tscn" type="PackedScene" id=8]
-[ext_resource path="res://GeneralUIScenes/MenuScreen.tscn" type="PackedScene" id=9]
-[ext_resource path="res://GeneralUIScripts/AudioPlayer.gd" type="Script" id=10]
-[ext_resource path="res://GeneralUIScenes/OptionsScreen.tscn" type="PackedScene" id=11]
-[ext_resource path="res://GeneralUIScripts/SoundEffectPlayer.gd" type="Script" id=12]
-[ext_resource path="res://Resources/Sounds/textbox_proceed.wav" type="AudioStream" id=13]
-[ext_resource path="res://GeneralUIScripts/AdvanceDialogPlayer.gd" type="Script" id=14]
-[ext_resource path="res://GeneralUIScenes/EndScreen.tscn" type="PackedScene" id=15]
-[ext_resource path="res://GeneralUIScenes/StartMenuScreen.tscn" type="PackedScene" id=16]
-[ext_resource path="res://GeneralUIScripts/StartScreen.gd" type="Script" id=17]
-[ext_resource path="res://Resources/Graphics/GeneralUI/title_Screen.png" type="Texture" id=18]
-[ext_resource path="res://GeneralUIScripts/MenuButtonDialogPlayer.gd" type="Script" id=19]
-[ext_resource path="res://Resources/Sounds/click.wav" type="AudioStream" id=20]
-[ext_resource path="res://GeneralUIScripts/SaveManager.gd" type="Script" id=21]
-[ext_resource path="res://GeneralUIScenes/LoadingScreen.tscn" type="PackedScene" id=22]
-[ext_resource path="res://GeneralUIScenes/SavingScreen.tscn" type="PackedScene" id=23]
-[ext_resource path="res://GeneralUIScenes/SaveDeletingScreen.tscn" type="PackedScene" id=24]
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://nt84o5psyt87" path="res://VPSScenes/Device/Tamagotchi.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ts8i8yyx7cmi" path="res://VNScenes/VNTextBox.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cp3t1hmmw7a1a" path="res://VPSScenes/Textbox/TamagotchiTextBox.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://rcg7rmy816yi" path="res://VNScenes/CharacterView.tscn" id="5"]
+[ext_resource type="Script" path="res://VNScripts/DialogManager.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://c3t73df83nwj2" path="res://GeneralUIScenes/GameOverScreen.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dh4xcbk8ehfhi" path="res://VNScenes/ChapterScreen.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://d1f6tj7xg1e1v" path="res://GeneralUIScenes/MenuScreen.tscn" id="9"]
+[ext_resource type="Script" path="res://GeneralUIScripts/AudioPlayer.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://dhtgg27r6pgr2" path="res://GeneralUIScenes/OptionsScreen.tscn" id="11"]
+[ext_resource type="Script" path="res://GeneralUIScripts/SoundEffectPlayer.gd" id="12"]
+[ext_resource type="AudioStream" uid="uid://i0c7cnre0hgv" path="res://Resources/Sounds/textbox_proceed.wav" id="13"]
+[ext_resource type="Script" path="res://GeneralUIScripts/AdvanceDialogPlayer.gd" id="14"]
+[ext_resource type="PackedScene" uid="uid://bwupaaxy5qe4g" path="res://GeneralUIScenes/EndScreen.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://bnr3eth7gf7yc" path="res://GeneralUIScenes/StartMenuScreen.tscn" id="16"]
+[ext_resource type="Script" path="res://GeneralUIScripts/StartScreen.gd" id="17"]
+[ext_resource type="Texture2D" uid="uid://bgc7xu6f2timo" path="res://Resources/Graphics/GeneralUI/title_Screen.png" id="18"]
+[ext_resource type="Script" path="res://GeneralUIScripts/MenuButtonDialogPlayer.gd" id="19"]
+[ext_resource type="AudioStream" uid="uid://cj86en2fmurvm" path="res://Resources/Sounds/click.wav" id="20"]
+[ext_resource type="Script" path="res://GeneralUIScripts/SaveManager.gd" id="21"]
+[ext_resource type="PackedScene" uid="uid://c22ieyh865wn4" path="res://GeneralUIScenes/LoadingScreen.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://6mj0nf754due" path="res://GeneralUIScenes/SavingScreen.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://0b1yd75f01wt" path="res://GeneralUIScenes/SaveDeletingScreen.tscn" id="24"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4kvrw"]
+random_pitch = 1.25
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("20")
+stream_0/weight = 1.0
 
 [node name="Main" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="CharacterView" parent="." groups=["Persistent"] instance=ExtResource( 5 )]
-position = Vector2( 360, 2.38419e-07 )
-scale = Vector2( 5, 5 )
+[node name="CharacterView" parent="." groups=["Persistent"] instance=ExtResource("5")]
+position = Vector2(360, 2.38419e-07)
+scale = Vector2(5, 5)
 
-[node name="Tamagotchi" parent="." groups=["Persistent"] instance=ExtResource( 2 )]
-scale = Vector2( 5, 5 )
+[node name="Tamagotchi" parent="." groups=["Persistent"] instance=ExtResource("2")]
+scale = Vector2(5, 5)
 needDecayPerSecond = 0.25
 
-[node name="TamagotchiTextBox" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 435 )
-scale = Vector2( 5, 5 )
+[node name="TamagotchiTextBox" parent="." instance=ExtResource("4")]
+position = Vector2(0, 435)
+scale = Vector2(5, 5)
 
-[node name="VNTextBox" parent="." instance=ExtResource( 3 )]
-position = Vector2( 360, 435 )
-scale = Vector2( 5, 5 )
+[node name="VNTextBox" parent="." instance=ExtResource("3")]
+position = Vector2(360, 435)
+scale = Vector2(5, 5)
 
 [node name="DialogManager" type="Node" parent="." groups=["Persistent"]]
-script = ExtResource( 6 )
+script = ExtResource("6")
 startFileName = "res://Resources/Dialog/dialogue.json"
 
 [node name="SaveManager" type="Node" parent="."]
-script = ExtResource( 21 )
+script = ExtResource("21")
 
-[node name="GameOverScreen" parent="." instance=ExtResource( 7 )]
+[node name="GameOverScreen" parent="." instance=ExtResource("7")]
 visible = false
 
-[node name="ChapterScreen" parent="." instance=ExtResource( 8 )]
+[node name="ChapterScreen" parent="." instance=ExtResource("8")]
 visible = false
 
-[node name="MenuScreen" parent="." instance=ExtResource( 9 )]
-pause_mode = 2
+[node name="MenuScreen" parent="." instance=ExtResource("9")]
+process_mode = 3
 visible = false
 
 [node name="StartScreen" type="TextureRect" parent="."]
-pause_mode = 2
-margin_right = 240.0
-margin_bottom = 135.0
-rect_scale = Vector2( 5, 5 )
-texture = ExtResource( 18 )
-script = ExtResource( 17 )
+process_mode = 3
+visible = false
+offset_right = 240.0
+offset_bottom = 135.0
+scale = Vector2(5, 5)
+texture = ExtResource("18")
+script = ExtResource("17")
 
-[node name="StartMenuScreen" parent="." instance=ExtResource( 16 )]
-pause_mode = 2
+[node name="StartMenuScreen" parent="." instance=ExtResource("16")]
+process_mode = 3
 visible = false
 
-[node name="OptionsScreen" parent="." instance=ExtResource( 11 )]
-pause_mode = 2
+[node name="OptionsScreen" parent="." instance=ExtResource("11")]
+process_mode = 3
 visible = false
 
-[node name="LoadingScreen" parent="." instance=ExtResource( 22 )]
+[node name="LoadingScreen" parent="." instance=ExtResource("22")]
 visible = false
 
-[node name="SaveDeletingScreen" parent="." instance=ExtResource( 24 )]
+[node name="SaveDeletingScreen" parent="." instance=ExtResource("24")]
 visible = false
 
-[node name="SavingScreen" parent="." instance=ExtResource( 23 )]
+[node name="SavingScreen" parent="." instance=ExtResource("23")]
 visible = false
 
-[node name="EndScreen" parent="." instance=ExtResource( 15 )]
+[node name="EndScreen" parent="." instance=ExtResource("15")]
 visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-bus = "Music"
-script = ExtResource( 10 )
+process_mode = 3
+bus = &"Music"
+script = ExtResource("10")
 
 [node name="DialogSoundEffectPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-bus = "SoundEffects"
-script = ExtResource( 12 )
+process_mode = 3
+bus = &"SoundEffects"
+script = ExtResource("12")
 
 [node name="AdvanceDialogPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 13 )
-bus = "SoundEffects"
-script = ExtResource( 14 )
+process_mode = 3
+stream = ExtResource("13")
+bus = &"SoundEffects"
+script = ExtResource("14")
 
 [node name="MenuButtonPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 20 )
-bus = "SoundEffects"
-script = ExtResource( 19 )
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_4kvrw")
+bus = &"SoundEffects"
+script = ExtResource("19")
 
 [connection signal="new_chapter" from="." to="ChapterScreen" method="_on_Main_new_chapter"]
 [connection signal="eat" from="Tamagotchi" to="DialogManager" method="_on_Tamagotchi_eat"]
@@ -168,9 +176,9 @@ script = ExtResource( 19 )
 [connection signal="backButton_pressed" from="SaveDeletingScreen" to="." method="_on_SaveDeletingScreen_backButton_pressed"]
 [connection signal="button_pressed" from="SaveDeletingScreen" to="MenuButtonPlayer" method="_on_SaveDeletingScreen_button_pressed"]
 [connection signal="deleteButton_pressed" from="SaveDeletingScreen" to="." method="_on_SaveDeletingScreen_deleteButton_pressed"]
-[connection signal="backButton_pressed" from="SavingScreen" to="." method="_on_SavingScreen_backButton_pressed"]
-[connection signal="button_pressed" from="SavingScreen" to="MenuButtonPlayer" method="_on_SavingScreen_button_pressed"]
-[connection signal="save" from="SavingScreen" to="." method="_on_SavingScreen_save"]
+[connection signal="backButton_pressed" from="SavingScreen" to="." method="_on_saving_screen_back_button_pressed"]
+[connection signal="button_pressed" from="SavingScreen" to="MenuButtonPlayer" method="_on_saving_screen_button_pressed"]
+[connection signal="save" from="SavingScreen" to="." method="_on_saving_screen_save"]
 [connection signal="button_pressed" from="EndScreen" to="MenuButtonPlayer" method="_on_EndScreen_button_pressed"]
 [connection signal="hide_screen" from="EndScreen" to="." method="_on_EndScreen_hide_screen"]
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_AudioPlayer_finished"]

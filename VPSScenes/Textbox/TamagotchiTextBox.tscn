@@ -1,39 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cp3t1hmmw7a1a"]
 
-[ext_resource path="res://Resources/Fonts/joystix.monospace.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Resources/Graphics/VPS/vps_text.png" type="Texture" id=2]
-[ext_resource path="res://VPSScripts/Textbox/TamagotchiTextBox.gd" type="Script" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 1 )
+[ext_resource type="FontFile" uid="uid://dia0bs2oqfg7c" path="res://Resources/Fonts/joystix.monospace.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://b7pnnop1f7m1l" path="res://Resources/Graphics/VPS/vps_text.png" id="2"]
+[ext_resource type="Script" path="res://VPSScripts/Textbox/TamagotchiTextBox.gd" id="3"]
 
 [node name="TamagotchiTextBox" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="TextBox" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2")
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
-margin_left = 6.0
-margin_top = 5.0
-margin_right = 498.0
-margin_bottom = 321.0
-rect_scale = Vector2( 0.12, 0.12 )
-custom_fonts/normal_font = SubResource( 1 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 498.0
+offset_bottom = 321.0
+scale = Vector2(0.12, 0.12)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1")
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ShowTextTimer" type="Timer" parent="."]
-process_mode = 0
 wait_time = 0.02
 one_shot = true
+
 [connection signal="timeout" from="ShowTextTimer" to="." method="_on_ShowTextTimer_timeout"]

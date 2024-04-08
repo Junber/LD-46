@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Graphics/Characters/Sarah/sarah_happy.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Graphics/Characters/Sarah/sarah_happy_talk.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Characters/Sarah/sarah_happy.png" type="Texture2D" id=1]
+[ext_resource path="res://Resources/Graphics/Characters/Sarah/sarah_happy_talk.png" type="Texture2D" id=2]
 
 [resource]
 animations = [ {

@@ -1,19 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://ts8i8yyx7cmi"]
 
-[ext_resource path="res://VNScripts/VNTextBox.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Graphics/VNUI/character_dialogue.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Fonts/orange-kid.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Resources/Fonts/orange-kid-bold.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Resources/Fonts/orange-kid.regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=7]
+[ext_resource type="Script" path="res://VNScripts/VNTextBox.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://7mamb68vsrev" path="res://Resources/Graphics/VNUI/character_dialogue.png" id="2"]
+[ext_resource type="FontFile" uid="uid://sn6c8aw65lhs" path="res://Resources/Fonts/orange-kid.bold.ttf" id="5_72qmk"]
+[ext_resource type="FontFile" uid="uid://bicjs0tjxcn80" path="res://Resources/Fonts/orange-kid.regular.ttf" id="6"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="7"]
 
-[sub_resource type="DynamicFont" id=3]
-size = 160
-outline_size = 10
-outline_color = Color( 0.211765, 0.568627, 0.658824, 1 )
-font_data = ExtResource( 6 )
-
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id="4"]
 code = "shader_type canvas_item;
 
 uniform bool all_colors = false;
@@ -26,52 +19,64 @@ void fragment(){
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/all_colors = true
-shader_param/threshold = 1.0
+[sub_resource type="ShaderMaterial" id="5"]
+shader = SubResource("4")
+shader_parameter/all_colors = true
+shader_parameter/threshold = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_plsvc"]
+base_font = ExtResource("6")
+variation_embolden = 0.5
 
 [node name="VNTextBox" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="TextBox" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
-material = ExtResource( 7 )
-margin_left = 18.0
-margin_top = 13.0
-margin_right = 3308.0
-margin_bottom = 681.0
-rect_scale = Vector2( 0.04, 0.04 )
+material = ExtResource("7")
+clip_contents = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 3308.0
+offset_bottom = 681.0
+scale = Vector2(0.04, 0.04)
 mouse_filter = 2
-custom_fonts/italics_font = SubResource( 3 )
-custom_fonts/bold_font = ExtResource( 4 )
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_colors/font_outline_color = Color(0.337255, 0.470588, 0.996078, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_fonts/bold_font = ExtResource("5_72qmk")
+theme_override_fonts/italics_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 180
+theme_override_font_sizes/italics_font_size = 180
 bbcode_enabled = true
-bbcode_text = "[i] Today is my last day with me mom [/i] Test"
-text = " Today is my last day with me mom  Test"
+text = "[i]I Today is my last day with me mom[/i] 
+Test
+Test"
 
 [node name="NameLabel" type="RichTextLabel" parent="TextBox"]
-material = SubResource( 5 )
-margin_left = 18.0
-margin_top = 3.0
-margin_right = 518.0
-margin_bottom = 53.0
-rect_scale = Vector2( 0.2, 0.2 )
+material = SubResource("5")
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 2093.0
+offset_bottom = 278.0
+scale = Vector2(0.04, 0.04)
 mouse_filter = 2
-custom_colors/default_color = Color( 0.847059, 0.847059, 0.45098, 1 )
-custom_fonts/bold_font = ExtResource( 4 )
-custom_fonts/normal_font = ExtResource( 3 )
+theme_override_colors/default_color = Color(0.847059, 0.847059, 0.45098, 1)
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_fonts/bold_font = SubResource("FontVariation_plsvc")
+theme_override_font_sizes/normal_font_size = 140
+theme_override_font_sizes/bold_font_size = 200
 bbcode_enabled = true
-bbcode_text = "[b]Mom:[/b]"
-text = "Mom:"
+text = "[b]Mom:[/b]"
 
 [node name="ShowTextTimer" type="Timer" parent="."]
-process_mode = 0
 wait_time = 0.02
 one_shot = true
 

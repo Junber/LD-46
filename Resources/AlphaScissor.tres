@@ -1,19 +1,18 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3tb8733jaxk6"]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id="4"]
 code = "shader_type canvas_item;
 
 uniform bool all_colors = false;
 uniform float threshold = 0.75;
 
 void fragment(){
-	COLOR *= texture(TEXTURE, UV);
 	if (all_colors || (COLOR.r == COLOR.g && COLOR.g == COLOR.b && COLOR.r > 0.62)) { // Hack to only alpha-scissor the text on buttons
 		COLOR.a = step(threshold, COLOR.a);
 	}
 }"
 
 [resource]
-shader = SubResource( 4 )
-shader_param/all_colors = false
-shader_param/threshold = 0.75
+shader = SubResource("4")
+shader_parameter/all_colors = true
+shader_parameter/threshold = 0.4

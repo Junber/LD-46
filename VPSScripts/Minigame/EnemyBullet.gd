@@ -26,6 +26,5 @@ func unpause():
 	paused = false
 
 
-# warning-ignore:unused_argument
-func _on_EnemyBullet_area_entered(area):
+func _on_EnemyBullet_area_entered(_area):
 	queue_free()

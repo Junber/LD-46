@@ -15,7 +15,7 @@ var loopDict = {
 
 var currentLoop
 
-export(String) var initialMusic = "deep sea"
+@export var initialMusic: String = "deep sea"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,23 +23,23 @@ func _ready():
 	play_music(initialMusic)
 
 
-func play_music(name: String):
-	if name.length() == 0:
+func play_music(track_name: String):
+	if track_name.length() == 0:
 		set_stream_paused(true)
 	else:
-		currentLoop = loopDict[name]
+		currentLoop = loopDict[track_name]
 		stop()
-		if introDict.has(name):
-			set_stream(introDict[name])
+		if introDict.has(track_name):
+			set_stream(introDict[track_name])
 		else:
-			set_stream(loopDict[name])
+			set_stream(loopDict[track_name])
 		play()
 		set_stream_paused(false)
-	
+
 func _on_AudioPlayer_finished():
 	set_stream(currentLoop)
 	play()
 
 
-func _on_DialogManager_play_music(name):
-	play_music(name)
+func _on_DialogManager_play_music(track_name):
+	play_music(track_name)

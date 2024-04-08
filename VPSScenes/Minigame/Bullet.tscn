@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Resources/Graphics/Minigame/Player/player_shot.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Graphics/Minigame/Player/player_shot.png" type="Texture2D" id=1]
 [ext_resource path="res://VPSScripts/Minigame/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.50437, 1.50072 )
+size = Vector2( 1.50437, 1.50072 )
 
 [node name="Bullet" type="Area2D" groups=["minigame_objects"]]
 collision_layer = 4
 collision_mask = 18
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource( 1 )
 centered = false
 

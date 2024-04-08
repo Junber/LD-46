@@ -7,4 +7,4 @@ func _ready():
 
 
 func set_label(label):
-	$Label.bbcode_text = "[center]" + label + "[/center]"
+	$Label.text = "[center]" + label + "[/center]"

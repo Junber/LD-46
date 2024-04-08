@@ -1,159 +1,119 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://rcg7rmy816yi"]
 
-[ext_resource path="res://Resources/Graphics/Backgrounds/character view.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Graphics/Backgrounds/shallow_sea.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Graphics/Backgrounds/living_room.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Graphics/Backgrounds/shallow_sea_creatures.png" type="Texture" id=4]
-[ext_resource path="res://VNScripts/CharacterView.gd" type="Script" id=5]
-[ext_resource path="res://Resources/Graphics/Backgrounds/office.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Graphics/Backgrounds/deep_sea_eye.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Graphics/Backgrounds/city.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Graphics/Backgrounds/deep_sea.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Graphics/Backgrounds/class.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Graphics/Backgrounds/deep_sea_creatures.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Graphics/Backgrounds/living_room_night.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Graphics/Backgrounds/beach.png" type="Texture" id=13]
+[ext_resource type="Texture2D" uid="uid://c1x24y3iqgf82" path="res://Resources/Graphics/Backgrounds/character view.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://y0u363jiopsp" path="res://Resources/Graphics/Backgrounds/shallow_sea.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c4xtnp1sasew3" path="res://Resources/Graphics/Backgrounds/living_room.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bajfksdy6wvfu" path="res://Resources/Graphics/Backgrounds/shallow_sea_creatures.png" id="4"]
+[ext_resource type="Script" path="res://VNScripts/CharacterView.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://yddkirj5rrcg" path="res://Resources/Graphics/Backgrounds/office.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c4aitcic8y2ft" path="res://Resources/Graphics/Backgrounds/deep_sea_eye.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bkrpc6jlw06qi" path="res://Resources/Graphics/Backgrounds/city.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://8u2flifk7ilt" path="res://Resources/Graphics/Backgrounds/deep_sea.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://df10clnd186dg" path="res://Resources/Graphics/Backgrounds/class.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://cgun34c6nhug0" path="res://Resources/Graphics/Backgrounds/deep_sea_creatures.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://b5n6culbv81xd" path="res://Resources/Graphics/Backgrounds/living_room_night.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dokkbexljjjfo" path="res://Resources/Graphics/Backgrounds/beach.png" id="13"]
 
 [node name="CharacterView" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 startingBackground = "class"
 
 [node name="Black" type="TextureRect" parent="."]
-visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackgroundBeach" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-texture = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("13")
 
 [node name="BackgroundDeepSeaCreatures" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("11")
 
 [node name="BackgroundLivingRoomNight" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("12")
 
 [node name="BackgroundClass" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("10")
 
 [node name="BackgroundCity" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("8")
 
 [node name="BackgroundDeepSea" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("9")
 
 [node name="BackgroundDeepSeaEye" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("7")
 
 [node name="BackgroundLivingRoom" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("3")
 
 [node name="BackgroundOffice" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("6")
 
 [node name="BackgroundShallowSea" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("2")
 
 [node name="BackgroundShallowSeaCreatures" type="TextureRect" parent="."]
 visible = false
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("4")
 
 [node name="ChoiceButtonContainer" type="VBoxContainer" parent="."]
-margin_right = 168.0
-margin_bottom = 87.0
+offset_right = 168.0
+offset_bottom = 87.0
 mouse_filter = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="1CharacterPosition1" type="Position2D" parent="."]
-position = Vector2( 90, 23 )
+[node name="1CharacterPosition1" type="Marker2D" parent="."]
+position = Vector2(90, 23)
 
-[node name="2CharacterPosition1" type="Position2D" parent="."]
-position = Vector2( 122, 23 )
+[node name="2CharacterPosition1" type="Marker2D" parent="."]
+position = Vector2(122, 23)
 
-[node name="2CharacterPosition2" type="Position2D" parent="."]
-position = Vector2( 27, 23 )
+[node name="2CharacterPosition2" type="Marker2D" parent="."]
+position = Vector2(27, 23)

@@ -24,5 +24,5 @@ func continue_if_possible():
 		emit_signal("hide_screen")
 
 func _on_EndScreen_gui_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		continue_if_possible()

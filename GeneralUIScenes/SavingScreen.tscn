@@ -1,155 +1,120 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://6mj0nf754due"]
 
-[ext_resource path="res://VNTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Resources/Graphics/GeneralUI/menu_background.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Fonts/orange-kid.regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://GeneralUIScripts/SavingScreen.gd" type="Script" id=4]
-[ext_resource path="res://Resources/Fonts/orange-kid_small.tres" type="DynamicFont" id=5]
-[ext_resource path="res://GeneralUIScenes/PopupPanel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=7]
+[ext_resource type="Theme" uid="uid://dvwt0gddw54iw" path="res://VNTheme.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://7r1d1uu8g2l6" path="res://Resources/Graphics/GeneralUI/menu_background.png" id="2"]
+[ext_resource type="FontFile" uid="uid://bicjs0tjxcn80" path="res://Resources/Fonts/orange-kid.regular.ttf" id="3"]
+[ext_resource type="Script" path="res://GeneralUIScripts/SavingScreen.gd" id="4"]
+[ext_resource type="FontFile" path="res://Resources/Fonts/orange-kid_small.tres" id="5"]
+[ext_resource type="PackedScene" path="res://GeneralUIScenes/PopupPanel.tscn" id="6"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="7"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 80
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/65/0 = Vector2(0, 0)
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/65/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/65/0/kerning_overrides/65/0 = Vector2(0, 0)
 
 [node name="SavingScreen" type="TextureRect"]
-pause_mode = 2
-margin_right = 1200.0
-margin_bottom = 675.0
-theme = ExtResource( 1 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 7
-script = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+process_mode = 3
+offset_right = 1200.0
+offset_bottom = 675.0
+theme = ExtResource("1")
+texture = ExtResource("2")
+expand_mode = 1
+script = ExtResource("4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 148.0
-margin_right = 1348.0
-margin_bottom = 936.0
-rect_scale = Vector2( 0.75, 0.75 )
-custom_constants/separation = 29
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
+layout_mode = 0
+offset_left = 148.0
+offset_right = 1348.0
+offset_bottom = 936.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 29
 
 [node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1200.0
-margin_bottom = 97.0
-__meta__ = {
-"_editor_description_": ""
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
-material = ExtResource( 7 )
-margin_right = 1200.0
-margin_bottom = 97.0
-custom_fonts/font = SubResource( 1 )
+material = ExtResource("7")
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
 text = "Select a name for the save"
-align = 1
-valign = 1
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="ExplanationContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 126.0
-margin_right = 1200.0
-margin_bottom = 187.0
-custom_constants/margin_right = 20
-custom_constants/margin_left = 50
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 20
 
 [node name="Label" type="Label" parent="VBoxContainer/ExplanationContainer"]
-material = ExtResource( 7 )
-margin_left = 50.0
-margin_right = 1180.0
-margin_bottom = 61.0
-custom_fonts/font = ExtResource( 5 )
+material = ExtResource("7")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5")
 text = "Select a save to overwrite or write a name for a new save."
-autowrap = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 216.0
-margin_right = 1200.0
-margin_bottom = 333.0
-custom_constants/margin_right = 27
-custom_constants/margin_left = 50
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 27
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer"]
-material = ExtResource( 7 )
-margin_left = 50.0
-margin_right = 1173.0
-margin_bottom = 117.0
-clear_button_enabled = true
+material = ExtResource("7")
+layout_mode = 2
 placeholder_text = "Save name"
-placeholder_alpha = 1.0
+clear_button_enabled = true
 
 [node name="ListContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 362.0
-margin_right = 1200.0
-margin_bottom = 662.0
-custom_constants/margin_right = 30
-custom_constants/margin_left = 50
-__meta__ = {
-"_editor_description_": ""
-}
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 30
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer/ListContainer"]
-material = ExtResource( 7 )
-margin_left = 50.0
-margin_right = 1170.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 0, 300 )
-theme = ExtResource( 1 )
+material = ExtResource("7")
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme = ExtResource("1")
 allow_reselect = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 691.0
-margin_right = 1200.0
-margin_bottom = 864.0
-custom_constants/margin_right = 30
-custom_constants/margin_top = 16
-custom_constants/margin_left = 37
-__meta__ = {
-"_editor_description_": ""
-}
+layout_mode = 2
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonContainer"]
-margin_left = 37.0
-margin_top = 16.0
-margin_right = 1170.0
-margin_bottom = 173.0
+layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_right = 564.0
-margin_bottom = 157.0
+material = ExtResource("7")
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_left = 568.0
-margin_right = 1133.0
-margin_bottom = 157.0
+material = ExtResource("7")
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Cancel"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
 
-[node name="PopupPanel" parent="." instance=ExtResource( 6 )]
+[node name="PopupPanel" parent="." instance=ExtResource("6")]
+size = Vector2i(302, 330)
 
-[connection signal="text_entered" from="VBoxContainer/MarginContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="text_submitted" from="VBoxContainer/MarginContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="item_activated" from="VBoxContainer/ListContainer/ItemList" to="." method="_on_ItemList_item_activated"]
 [connection signal="item_selected" from="VBoxContainer/ListContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]

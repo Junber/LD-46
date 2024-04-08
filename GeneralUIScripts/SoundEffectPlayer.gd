@@ -11,7 +11,7 @@ func _ready():
 	pass
 
 
-func _on_DialogManager_play_sound_effect(name):
+func _on_DialogManager_play_sound_effect(sfx_name):
 	stop()
-	set_stream(sfxDict[name])
+	set_stream(sfxDict[sfx_name])
 	play()

@@ -17,7 +17,7 @@ signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass 
+	pass
 
 
 func _on_Tamagotchi_eat():

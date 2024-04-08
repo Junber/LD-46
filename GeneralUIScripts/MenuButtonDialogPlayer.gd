@@ -33,3 +33,6 @@ func _on_SavingScreen_button_pressed():
 
 func _on_SaveDeletingScreen_button_pressed():
 	play()
+
+func _on_saving_screen_button_pressed() -> void:
+	play()

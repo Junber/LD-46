@@ -16,5 +16,5 @@ func go_away():
 	visible = false
 
 func _on_StartScreen_gui_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		emit_signal("hide_screen")

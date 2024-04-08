@@ -1,46 +1,40 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://ciyx237po20a5"]
 
-[ext_resource path="res://Resources/Graphics/VNUI/character_choice_button.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Fonts/orange-kid.tres" type="DynamicFont" id=2]
-[ext_resource path="res://VNScripts/ChoiceButton.gd" type="Script" id=3]
-[ext_resource path="res://Resources/Fonts/orange-kid-bold.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=5]
-[ext_resource path="res://Resources/Graphics/VNUI/character_choice_button_pressed.png" type="Texture" id=6]
-[ext_resource path="res://VNScripts/Label.gd" type="Script" id=7]
+[ext_resource type="Texture2D" uid="uid://cgj03ewstdwe7" path="res://Resources/Graphics/VNUI/character_choice_button.png" id="1"]
+[ext_resource type="Script" path="res://VNScripts/ChoiceButton.gd" id="3"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://bicjs0tjxcn80" path="res://Resources/Fonts/orange-kid.regular.ttf" id="5_tgblc"]
+[ext_resource type="Texture2D" uid="uid://blxow7uxydgpa" path="res://Resources/Graphics/VNUI/character_choice_button_pressed.png" id="6"]
+[ext_resource type="Script" path="res://VNScripts/Label.gd" id="7"]
 
 [node name="Button" type="TextureButton"]
-margin_right = 91.0
-margin_bottom = 36.0
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+offset_right = 91.0
+offset_bottom = 36.0
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("6")
 stretch_mode = 4
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("3")
 
 [node name="Label" type="RichTextLabel" parent="."]
-material = ExtResource( 5 )
+material = ExtResource("5")
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -78.5
-margin_top = 2.0
-margin_right = 3060.5
-margin_bottom = 239.0
-rect_scale = Vector2( 0.05, 0.05 )
-mouse_filter = 1
+offset_left = -78.5
+offset_top = 2.0
+offset_right = 3060.5
+offset_bottom = 239.0
+scale = Vector2(0.05, 0.05)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_colors/default_color = Color( 0.784314, 0.784314, 0.784314, 1 )
-custom_fonts/bold_font = ExtResource( 4 )
-custom_fonts/normal_font = ExtResource( 2 )
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_fonts/normal_font = ExtResource("5_tgblc")
+theme_override_font_sizes/normal_font_size = 160
 bbcode_enabled = true
-text = "Test"
+text = "[center]Test"
 scroll_active = false
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("7")
 
 [connection signal="mouse_entered" from="." to="Label" method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="." to="Label" method="_on_Button_mouse_exited"]

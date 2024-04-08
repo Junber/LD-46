@@ -1,59 +1,72 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://dh4xcbk8ehfhi"]
 
-[ext_resource path="res://Resources/Fonts/orange-kid.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Resources/Fonts/orange-kid-bold.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Resources/Graphics/Backgrounds/character view.png" type="Texture" id=4]
-[ext_resource path="res://VNScripts/ChapterScreen.gd" type="Script" id=5]
-[ext_resource path="res://Resources/Graphics/GeneralUI/screen_border.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sounds/chapter_change.wav" type="AudioStream" id=7]
+[ext_resource type="Texture2D" uid="uid://c1x24y3iqgf82" path="res://Resources/Graphics/Backgrounds/character view.png" id="4"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="4_1mumc"]
+[ext_resource type="FontFile" uid="uid://bicjs0tjxcn80" path="res://Resources/Fonts/orange-kid.regular.ttf" id="4_r0ah2"]
+[ext_resource type="Script" path="res://VNScripts/ChapterScreen.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://cy880n3tpuhj5" path="res://Resources/Graphics/GeneralUI/screen_border.png" id="6"]
+[ext_resource type="AudioStream" uid="uid://c5sl7h1l4ietr" path="res://Resources/Sounds/chapter_change.wav" id="7"]
+[ext_resource type="Script" path="res://VNScripts/Skip.gd" id="7_2dhed"]
+[ext_resource type="Texture2D" uid="uid://cs21geg4l74d1" path="res://Resources/Graphics/GeneralUI/skip_counter.png" id="8_2y23t"]
+
+[sub_resource type="Shader" id="Shader_3x61j"]
+code = "shader_type canvas_item;
+
+uniform float threshold = 0.75;
+
+void fragment(){
+	float ta = texture(TEXTURE, UV).a;
+	COLOR.a = step(threshold, ta) * COLOR.a / ta;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6bwn"]
+shader = SubResource("Shader_3x61j")
+shader_parameter/threshold = 0.5
 
 [node name="ChapterScreen" type="TextureRect"]
-pause_mode = 2
-margin_right = 1200.0
-margin_bottom = 675.0
-texture = ExtResource( 4 )
-expand = true
-script = ExtResource( 5 )
+process_mode = 3
+offset_right = 1200.0
+offset_bottom = 675.0
+texture = ExtResource("4")
+expand_mode = 1
+script = ExtResource("5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1200.0
-margin_bottom = 675.0
-texture = ExtResource( 6 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 675.0
+texture = ExtResource("6")
+expand_mode = 1
 
 [node name="ChapterLabel" type="RichTextLabel" parent="."]
+material = ExtResource("4_1mumc")
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -600.0
-margin_top = -180.5
-margin_right = 600.0
-margin_bottom = 41.5
+offset_left = -600.0
+offset_top = -180.5
+offset_right = 600.0
+offset_bottom = 41.5
 mouse_filter = 1
-custom_fonts/bold_font = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 1 )
+theme_override_fonts/normal_font = ExtResource("4_r0ah2")
+theme_override_font_sizes/normal_font_size = 160
 bbcode_enabled = true
-bbcode_text = "[center]Chapter 2"
-text = "Chapter 2"
+text = "[center]Chapter 2"
 
 [node name="Subtitle" type="RichTextLabel" parent="."]
-margin_top = 409.0
-margin_right = 2970.0
-margin_bottom = 617.0
-rect_scale = Vector2( 0.4, 0.4 )
+material = ExtResource("4_1mumc")
+layout_mode = 0
+offset_top = 409.0
+offset_right = 2970.0
+offset_bottom = 617.0
+scale = Vector2(0.4, 0.4)
 mouse_filter = 1
-custom_fonts/bold_font = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 1 )
+theme_override_fonts/normal_font = ExtResource("4_r0ah2")
+theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-bbcode_text = "[center]A Dark Beginning"
-text = "A Dark Beginning"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "[center]A Dark Beginning"
 
 [node name="TitleAppearTimer" type="Timer" parent="."]
 wait_time = 1.12
@@ -64,9 +77,73 @@ wait_time = 4.85
 one_shot = true
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "ChapterChange"
+stream = ExtResource("7")
+bus = &"ChapterChange"
+
+[node name="Skip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_2dhed")
+
+[node name="SkipLabel" type="RichTextLabel" parent="Skip"]
+material = SubResource("ShaderMaterial_k6bwn")
+layout_mode = 2
+offset_left = 984.0
+offset_top = 598.0
+offset_right = 1045.0
+offset_bottom = 647.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("4_r0ah2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Skip:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skip"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1019.0
+offset_top = 564.0
+offset_right = 1129.0
+offset_bottom = 613.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Skip/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 2
+texture = ExtResource("8_2y23t")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Skip/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 2
+texture = ExtResource("8_2y23t")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="Skip/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 2
+texture = ExtResource("8_2y23t")
+stretch_mode = 3
+
+[node name="Timer" type="Timer" parent="Skip"]
+one_shot = true
 
 [connection signal="gui_input" from="." to="." method="_on_ChapterScreen_gui_input"]
 [connection signal="timeout" from="TitleAppearTimer" to="." method="_on_TitleAppearTimer_timeout"]
 [connection signal="timeout" from="SubtitleAppearTimer" to="." method="_on_SubtitleAppearTimer_timeout"]
+[connection signal="finished" from="AudioPlayer" to="." method="_on_audio_player_finished"]
+[connection signal="skip" from="Skip" to="." method="_on_skip_skip"]
+[connection signal="timeout" from="Skip/Timer" to="Skip" method="_on_timer_timeout"]

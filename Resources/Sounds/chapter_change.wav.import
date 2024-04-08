@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/chapter_change.wav-3f5ebb6b3b3f66a3c2755bfe520d41b0.sample"
+type="AudioStreamWAV"
+uid="uid://c5sl7h1l4ietr"
+path="res://.godot/imported/chapter_change.wav-3f5ebb6b3b3f66a3c2755bfe520d41b0.sample"
 
 [deps]
 
 source_file="res://Resources/Sounds/chapter_change.wav"
-dest_files=[ "res://.import/chapter_change.wav-3f5ebb6b3b3f66a3c2755bfe520d41b0.sample" ]
+dest_files=["res://.godot/imported/chapter_change.wav-3f5ebb6b3b3f66a3c2755bfe520d41b0.sample"]
 
 [params]
 

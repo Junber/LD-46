@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/textbox_proceed.wav-c7cce226eea4f324860aa90e6dabc487.sample"
+type="AudioStreamWAV"
+uid="uid://i0c7cnre0hgv"
+path="res://.godot/imported/textbox_proceed.wav-c7cce226eea4f324860aa90e6dabc487.sample"
 
 [deps]
 
 source_file="res://Resources/Sounds/textbox_proceed.wav"
-dest_files=[ "res://.import/textbox_proceed.wav-c7cce226eea4f324860aa90e6dabc487.sample" ]
+dest_files=["res://.godot/imported/textbox_proceed.wav-c7cce226eea4f324860aa90e6dabc487.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

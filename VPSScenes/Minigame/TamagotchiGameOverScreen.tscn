@@ -1,55 +1,52 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dugnjwx2jjbji"]
 
-[ext_resource path="res://Resources/Graphics/Minigame/UI/game_over.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Fonts/joystix.tres" type="DynamicFont" id=2]
-[ext_resource path="res://VPSScripts/Minigame/TamagotchiGameOverScreen.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://cm0k41derggme" path="res://Resources/Graphics/Minigame/UI/game_over.png" id="1"]
+[ext_resource type="FontFile" path="res://Resources/Fonts/joystix.tres" id="2"]
+[ext_resource type="Script" path="res://VPSScripts/Minigame/TamagotchiGameOverScreen.gd" id="3"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="3_3a7un"]
 
 [node name="GameOverScreen" type="TextureRect"]
-margin_left = 4.0
-margin_top = 5.0
-margin_right = 68.0
-margin_bottom = 76.0
-texture = ExtResource( 1 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 76.0
+texture = ExtResource("1")
+script = ExtResource("3")
 
 [node name="ScoreLabel" type="Label" parent="."]
+material = ExtResource("3_3a7un")
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.837
 anchor_top = 0.096
 anchor_right = 0.925
 anchor_bottom = 0.15
-margin_left = -50.568
-margin_top = -0.816
-margin_right = 84.8
-margin_bottom = 67.35
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = -31.568
+offset_top = -6.816
+offset_right = -12.2
+offset_bottom = 25.35
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 text = "0"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
+horizontal_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="."]
+material = ExtResource("3_3a7un")
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.837
 anchor_top = 0.096
 anchor_right = 0.925
 anchor_bottom = 0.15
-margin_left = -19.568
-margin_top = -0.816
-margin_right = 107.8
-margin_bottom = 67.35
-grow_horizontal = 0
-grow_vertical = 0
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = -16.568
+offset_top = -6.816
+offset_right = 14.8
+offset_bottom = 25.35
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
+horizontal_alignment = 1

@@ -29,45 +29,59 @@ enum STATE{
 	minigame,
 	gameOver}
 
-onready var stageSpriteMap = {
+@onready var stageSpriteMap = {
 	STAGE.egg: $Screen/HomeScreen/NormalSprites/EggSprite,
 	STAGE.baby: $Screen/HomeScreen/NormalSprites/BabySprite,
 	STAGE.adult: $Screen/HomeScreen/NormalSprites/AdultSprite,
 	STAGE.old: $Screen/HomeScreen/NormalSprites/OldSprite}
 
-onready var stageNameMap = {
+@onready var stageNameMap = {
 	"egg" : STAGE.egg,
 	"young" : STAGE.baby,
 	"adult" : STAGE.adult,
 	"old" : STAGE.old}
 
-var stage: int = STAGE.egg setget change_stage_to_without_animation
-var state: int = STATE.home setget change_state_to
-var sleeping: bool = false setget set_sleeping
+var stage: int = STAGE.egg: set = change_stage_to_without_animation
 
-var fullness: float = 100 setget set_fullness
-var awakeness: float = 100 setget set_awakeness
-var fun: float = 100 setget set_fun
-var happiness: float = 100 setget set_happiness
+var internal_state := STATE.home
+var state: int:
+	get:
+		return internal_state
+	set(newState):
+		if newState == STATE.off:
+			switch_to_off()
+		elif newState == STATE.gameOver:
+			switch_to_game_over()
+		elif newState == STATE.home:
+			switch_to_home()
+		elif newState == STATE.minigame:
+			switch_to_minigame()
+
+var sleeping: bool = false: set = set_sleeping
+
+var fullness: float = 100: set = set_fullness
+var awakeness: float = 100: set = set_awakeness
+var fun: float = 100: set = set_fun
+var happiness: float = 100: set = set_happiness
 
 var needDecay := 0.0
 
-var highScore := 0 setget update_high_score
+var highScore := 0: set = update_high_score
 
-export(float) var needDecayPerSecond := 1.0
-export(float) var needGain = 10.0
-export(int) var minimumNeedAfterDialog = 15
+@export var needDecayPerSecond := 1.0
+@export var needGain: float = 10.0
+@export var minimumNeedAfterDialog: int = 15
 
 const minigameScreenScene = preload("res://VPSScenes/Minigame/TamagotchiMinigameScreen.tscn")
-onready var minigameScreen = $Screen/MinigameScreen
-onready var homeScreen = $Screen/HomeScreen
-onready var gameOverScreen = $Screen/GameOverScreen
+@onready var minigameScreen = $Screen/MinigameScreen
+@onready var homeScreen = $Screen/HomeScreen
+@onready var gameOverScreen = $Screen/GameOverScreen
 
-onready var fullProgressBar = $Screen/HomeScreen/UIContainer/FullnessUI/TextureProgress
-onready var awakeProgressBar = $Screen/HomeScreen/UIContainer/AwakenessUI/TextureProgress
-onready var funProgressBar = $Screen/HomeScreen/UIContainer/FunUI/TextureProgress
-onready var petHappyProgressBar = $Screen/HomeScreen/UIContainer/PetHappinessUI/TextureProgress
-onready var sickHappyProgressBar = $Screen/HomeScreen/UIContainer/SickHappinessUI/TextureProgress
+@onready var fullProgressBar = $Screen/HomeScreen/UIContainer/FullnessUI/TextureProgressBar
+@onready var awakeProgressBar = $Screen/HomeScreen/UIContainer/AwakenessUI/TextureProgressBar
+@onready var funProgressBar = $Screen/HomeScreen/UIContainer/FunUI/TextureProgressBar
+@onready var petHappyProgressBar = $Screen/HomeScreen/UIContainer/PetHappinessUI/TextureProgressBar
+@onready var sickHappyProgressBar = $Screen/HomeScreen/UIContainer/SickHappinessUI/TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -91,6 +105,9 @@ func _process(delta):
 				change_awakeness(10)
 
 func _input(event):
+	if state == STATE.off:
+		return
+
 	if event.is_action_pressed("food"):
 		press_food_button()
 	elif event.is_action_pressed("sleep"):
@@ -111,7 +128,7 @@ func savedProperties():
 
 func is_animating() -> bool:
 	return homeScreen.is_animating()
-	
+
 func set_sleeping(newState):
 	sleeping = newState
 	if sleeping:
@@ -202,7 +219,7 @@ func change_stage_to_without_animation(newStage):
 			restart_minigame()
 		if state != STATE.home:
 			switch_to_home()
-		
+
 	hide_sprite(stage)
 	stage = newStage
 	show_sprite(stage)
@@ -213,7 +230,7 @@ func change_stage_to(newStage):
 	if stage == STAGE.egg:
 		emit_signal("hatch")
 	change_stage_to_without_animation(newStage)
-	
+
 func is_satisfied(need, step) -> bool:
 	if need >= 100 - step / 2:
 		return true
@@ -221,19 +238,19 @@ func is_satisfied(need, step) -> bool:
 
 func hide_sprite(oldStage):
 	stageSpriteMap[oldStage].visible = false
-	stageSpriteMap[oldStage].playing = false
+	stageSpriteMap[oldStage].pause()
 
 func show_sprite(newStage):
-	stageSpriteMap[newStage].playing = true
+	stageSpriteMap[newStage].play()
 	stageSpriteMap[newStage].visible = true
-	
+
 
 func switch_to_minigame():
 	homeScreen.visible = false
 	minigameScreen.visible = true
 	gameOverScreen.visible = false
 	get_tree().call_group("minigame_objects", "unpause")
-	state = STATE.minigame
+	internal_state = STATE.minigame
 
 func switch_to_game_over(score = 0):
 	homeScreen.visible = false
@@ -241,38 +258,28 @@ func switch_to_game_over(score = 0):
 	gameOverScreen.visible = true
 	gameOverScreen.set_score(score)
 	get_tree().call_group("minigame_objects", "pause")
-	state = STATE.gameOver
+	internal_state = STATE.gameOver
 
 func switch_to_off():
 	homeScreen.visible = false
 	minigameScreen.visible = false
 	gameOverScreen.visible = false
 	get_tree().call_group("minigame_objects", "pause")
-	state = STATE.off
+	internal_state = STATE.off
 
 func switch_to_home():
 	homeScreen.visible = true
 	minigameScreen.visible = false
 	gameOverScreen.visible = false
 	get_tree().call_group("minigame_objects", "pause")
-	state = STATE.home
-
-func change_state_to(newState):
-	if newState == STATE.off:
-		switch_to_off()
-	elif newState == STATE.gameOver:
-		switch_to_game_over()
-	elif newState == STATE.home:
-		switch_to_home()
-	elif newState == STATE.minigame:
-		switch_to_minigame()
+	internal_state = STATE.home
 
 
 func restart_minigame():
 	minigameScreen.queue_free()
-	minigameScreen = minigameScreenScene.instance()
+	minigameScreen = minigameScreenScene.instantiate()
 	$Screen.call_deferred("add_child", minigameScreen)
-	minigameScreen.connect("game_over", $Screen, "_on_MinigameScreen_game_over")
+	minigameScreen.connect("game_over", Callable($Screen, "_on_MinigameScreen_game_over"))
 	get_tree().call_deferred("call_group", "minigame_objects", "pause")
 
 func update_high_score(score):
@@ -282,47 +289,59 @@ func update_high_score(score):
 
 
 func press_food_button():
+	if state == STATE.off:
+		return
+
 	emit_signal("button_pressed")
 	if state == STATE.gameOver:
 		switch_to_home()
 	elif state == STATE.minigame:
 		minigameScreen.move_left()
-	elif not is_animating() and state != STATE.off and stage != STAGE.egg:
+	elif not is_animating() and stage != STAGE.egg:
 		if sleeping:
 			toggle_sleep()
 		change_fullness(needGain)
 
 
 func press_sleep_button():
+	if state == STATE.off:
+		return
+
 	emit_signal("button_pressed")
 	if state == STATE.gameOver:
 		switch_to_home()
 	elif state == STATE.minigame:
 		minigameScreen.shoot()
-	elif not is_animating() and state != STATE.off and stage != STAGE.egg:
+	elif not is_animating() and stage != STAGE.egg:
 		toggle_sleep()
 
 
 func press_play_button():
+	if state == STATE.off:
+		return
+
 	emit_signal("button_pressed")
 	if state == STATE.gameOver:
 		switch_to_home()
 	elif state == STATE.minigame:
 		minigameScreen.move_right()
-	elif not is_animating() and state != STATE.off and stage != STAGE.egg:
+	elif not is_animating() and stage != STAGE.egg:
 		if sleeping:
 			toggle_sleep()
 		switch_to_minigame()
 
 
 func press_extra_button():
+	if state == STATE.off:
+		return
+
 	emit_signal("button_pressed")
 	if state == STATE.gameOver:
 		switch_to_home()
 	elif state == STATE.minigame:
 		restart_minigame()
 		switch_to_home()
-	elif not is_animating() and state != STATE.off and stage != STAGE.egg:
+	elif not is_animating() and stage != STAGE.egg:
 		if sleeping:
 			toggle_sleep()
 		change_happiness(needGain)

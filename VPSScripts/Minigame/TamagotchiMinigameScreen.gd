@@ -11,19 +11,19 @@ const enemyScenes = [
 
 const bulletScene = preload("res://VPSScenes/Minigame/Bullet.tscn")
 
-onready var scoreLabel = $ScoreLabel
-onready var heartContainer = $HeartContainer
-onready var player = $Player 
+@onready var scoreLabel = $ScoreLabel
+@onready var heartContainer = $HeartContainer
+@onready var player = $Player
 
-onready var spawnTimer = $EnemySpawnTimer
-onready var difficultyTimer = $DifficultyIncreaseTimer
-onready var shootTimer = $PlayerShootTimer
+@onready var spawnTimer = $EnemySpawnTimer
+@onready var difficultyTimer = $DifficultyIncreaseTimer
+@onready var shootTimer = $PlayerShootTimer
 
-onready var spawnPositionLeft = $EnemySpawnPosition1
-onready var spawnPositionRight = $EnemySpawnPosition2
+@onready var spawnPositionLeft = $EnemySpawnPosition1
+@onready var spawnPositionRight = $EnemySpawnPosition2
 
-export (int) var minX = 5
-export (int) var maxX = 64
+@export var minX := 5
+@export var maxX := 64
 
 var enemySpeed = 2.0
 var enemyBulletSpeed = 15.0
@@ -37,19 +37,19 @@ func _ready():
 
 
 func spawn_enemy():
-	var enemy = enemyScenes[randi() % enemyScenes.size()].instance()
-	enemy.position = spawnPositionLeft.position.linear_interpolate(spawnPositionRight.position, randf())
+	var enemy = enemyScenes[randi() % enemyScenes.size()].instantiate()
+	enemy.position = spawnPositionLeft.position.lerp(spawnPositionRight.position, randf())
 	enemy.position.x -= fmod(enemy.position.x, 5.0)
 	enemy.position.x = round(enemy.position.x)
-	enemy.connect("death", self, "_on_Enemy_death")
+	enemy.connect("death", Callable(self, "_on_Enemy_death"))
 	add_child(enemy)
-	enemy.set_speed(enemySpeed)
+	enemy.set_velocity(enemySpeed)
 	enemy.set_bullet_time(enemyBulletTime)
 	enemy.set_bullet_speed(enemyBulletSpeed)
 
 func increase_score():
 	score += 1
-	scoreLabel.set_text(String(score))
+	scoreLabel.set_text(str(score))
 
 func move_left():
 	player.position.x -= 5
@@ -60,12 +60,12 @@ func move_right():
 	player.position.x += 5
 	if player.position.x > maxX:
 		player.position.x -= 5
-	
+
 
 func shoot():
 	if shootTimer.is_stopped():
 		shootTimer.start()
-		var bullet = bulletScene.instance()
+		var bullet = bulletScene.instantiate()
 		bullet.position = player.position - Vector2(2, 0)
 		add_child(bullet)
 
@@ -77,11 +77,11 @@ func unpause():
 	spawnTimer.set_paused(false)
 	difficultyTimer.set_paused(false)
 
-	
+
 func increase_difficulty():
 	difficultyTimer.set_wait_time(difficultyTimer.get_wait_time() + 0.3)
 	difficultyTimer.start()
-	
+
 	var thingToIncrease = randi() % 4
 	if thingToIncrease == 0:
 		spawnTimer.stop()
@@ -96,17 +96,16 @@ func increase_difficulty():
 		enemyBulletTime /= 1.5
 
 
-# warning-ignore:unused_argument
-func _on_Player_area_entered(area):
+func _on_Player_area_entered(_area):
 	for heart in heartContainer.get_children():
 		if heart.visible:
 			heart.visible = false
 			break
-	
+
 	for heart in heartContainer.get_children():
 		if heart.visible:
 			return
-			
+
 	emit_signal("game_over", score)
 
 

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/everyday_loop.ogg-53c48a8ddfe89951715ab1354be2de1e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wq66qqomuy0i"
+path="res://.godot/imported/everyday_loop.ogg-53c48a8ddfe89951715ab1354be2de1e.oggvorbisstr"
 
 [deps]
 
 source_file="res://Resources/Music/everyday_loop.ogg"
-dest_files=[ "res://.import/everyday_loop.ogg-53c48a8ddfe89951715ab1354be2de1e.oggstr" ]
+dest_files=["res://.godot/imported/everyday_loop.ogg-53c48a8ddfe89951715ab1354be2de1e.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,8 +4,8 @@ signal backButton_pressed()
 signal loadButton_pressed(fileName)
 signal button_pressed()
 
-onready var savesList = $VBoxContainer/ListContainer/ItemList
-onready var popupPanel = $PopupPanel
+@onready var savesList = $VBoxContainer/ListContainer/ItemList
+@onready var popupPanel = $PopupPanel
 const Util = preload("res://SaveFileUtils.gd")
 
 func _ready():
@@ -24,7 +24,7 @@ func send_load(index):
 	emit_signal("button_pressed")
 
 func popup_error(message):
-	popupPanel.set_title("Error when loading this save!")
+	popupPanel.set_custom_title("Error when loading this save!")
 	popupPanel.set_text(message)
 	popupPanel.hide_abort_button()
 	popupPanel.popup()

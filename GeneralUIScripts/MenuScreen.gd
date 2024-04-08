@@ -23,8 +23,8 @@ func go_away():
 	visible = false
 
 func _on_QuitButton_pressed():
-	emit_signal("QuitButton_pressed")
 	emit_signal("button_pressed")
+	emit_signal("QuitButton_pressed")
 
 func _on_RestartButton_pressed():
 	emit_signal("RestartButton_pressed")

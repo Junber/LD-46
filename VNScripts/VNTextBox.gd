@@ -2,9 +2,9 @@ extends Node2D
 
 signal all_text_appeared
 
-onready var label = $TextBox/Label
-onready var nameLabel = $TextBox/NameLabel
-onready var timer = $ShowTextTimer
+@onready var label := $TextBox/Label as RichTextLabel
+@onready var nameLabel := $TextBox/NameLabel as RichTextLabel
+@onready var timer := $ShowTextTimer as Timer
 
 var textLengthUpperLimit = 0
 
@@ -13,18 +13,21 @@ func _ready():
 	label.set_visible_characters(label.get_total_character_count())
 
 
-func set_text(text):
-	label.set_bbcode(text)
+func set_text(text: String):
+	var italic := text.strip_edges().begins_with("[i]")
+
+	label.add_theme_constant_override("outline_size", 50 if italic else 0)
+	label.text = text
 	label.set_visible_characters(0)
 	timer.start()
-	
+
 	textLengthUpperLimit = text.length()
 
-func set_name(name):
-	if name.length() == 0:
-		nameLabel.bbcode_text = ""
+func set_character_name(character_name):
+	if character_name.length() == 0:
+		nameLabel.text = ""
 	else:
-		nameLabel.bbcode_text = "[b]" + name + ":[/b]"
+		nameLabel.text = "[b]" + character_name + ":[/b]"
 
 
 func text_length():
@@ -34,9 +37,9 @@ func text_length():
 		return label.get_total_character_count()
 
 
-func all_text_appeared():
+func has_all_text_appeared():
 	return label.get_visible_characters() >= text_length()
-		
+
 
 func show_all_text():
 	label.set_visible_characters(text_length())
@@ -45,7 +48,7 @@ func show_all_text():
 
 func _on_ShowTextTimer_timeout():
 	label.set_visible_characters(label.get_visible_characters() + 1)
-	if not all_text_appeared():
+	if not has_all_text_appeared():
 		timer.start()
 	else:
 		emit_signal("all_text_appeared")

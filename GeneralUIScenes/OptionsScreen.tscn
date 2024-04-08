@@ -1,169 +1,135 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://dhtgg27r6pgr2"]
 
-[ext_resource path="res://Resources/Graphics/GeneralUI/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Fonts/orange-kid.regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://GeneralUIScripts/OptionsScreen.gd" type="Script" id=3]
-[ext_resource path="res://Resources/AlphaScissor.tres" type="Material" id=4]
-[ext_resource path="res://VNTheme.tres" type="Theme" id=7]
-[ext_resource path="res://Resources/Fonts/orange-kid_small.tres" type="DynamicFont" id=8]
+[ext_resource type="Texture2D" uid="uid://7r1d1uu8g2l6" path="res://Resources/Graphics/GeneralUI/menu_background.png" id="1"]
+[ext_resource type="FontFile" uid="uid://bicjs0tjxcn80" path="res://Resources/Fonts/orange-kid.regular.ttf" id="2"]
+[ext_resource type="Script" path="res://GeneralUIScripts/OptionsScreen.gd" id="3"]
+[ext_resource type="Material" uid="uid://3tb8733jaxk6" path="res://Resources/AlphaScissor.tres" id="4"]
+[ext_resource type="Theme" uid="uid://dvwt0gddw54iw" path="res://VNTheme.tres" id="7"]
+[ext_resource type="FontFile" path="res://Resources/Fonts/orange-kid_small.tres" id="8"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/65/0 = Vector2(0, 0)
+cache/0/65/0/ascent = 0.0
+cache/0/65/0/descent = 0.0
+cache/0/65/0/underline_position = 0.0
+cache/0/65/0/underline_thickness = 0.0
+cache/0/65/0/scale = 1.0
+cache/0/65/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/65/0/kerning_overrides/65/0 = Vector2(0, 0)
 
 [node name="OptionsScreen" type="TextureRect"]
-margin_right = 1200.0
-margin_bottom = 675.0
-theme = ExtResource( 7 )
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 7
-script = ExtResource( 3 )
+offset_right = 1200.0
+offset_bottom = 675.0
+theme = ExtResource("7")
+texture = ExtResource("1")
+expand_mode = 1
+script = ExtResource("3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 148.0
-margin_right = 1348.0
-margin_bottom = 774.0
-rect_scale = Vector2( 0.75, 0.75 )
-custom_constants/separation = 29
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 148.0
+offset_top = 50.0
+offset_right = 1348.0
+offset_bottom = 824.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 29
 
 [node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1200.0
-margin_bottom = 121.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
-material = ExtResource( 4 )
-margin_right = 1200.0
-margin_bottom = 121.0
-custom_fonts/font = SubResource( 1 )
+material = ExtResource("4")
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
 text = "Settings"
-align = 1
-valign = 1
 
 [node name="SettingsContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 150.0
-margin_right = 1200.0
-margin_bottom = 599.0
-custom_constants/margin_right = 30
-custom_constants/margin_left = 50
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 30
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/SettingsContainer"]
-margin_left = 50.0
-margin_right = 1170.0
-margin_bottom = 449.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/vseparation = 15
-custom_constants/hseparation = 150
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 15
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_right = 345.0
-margin_bottom = 61.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
+material = ExtResource("4")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8")
 text = "Music Volume:"
-valign = 1
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/GridContainer"]
-margin_left = 495.0
-margin_right = 1120.0
-margin_bottom = 61.0
+layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
 value = 100.0
 
 [node name="Soundeffects" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_top = 76.0
-margin_right = 345.0
-margin_bottom = 137.0
+material = ExtResource("4")
+layout_mode = 2
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Sound Effect Volume:"
-valign = 1
 
 [node name="SoundeffectsSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/GridContainer"]
-margin_left = 495.0
-margin_top = 76.0
-margin_right = 1120.0
-margin_bottom = 137.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("7")
 value = 100.0
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Label2" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_top = 152.0
-margin_right = 345.0
-margin_bottom = 309.0
+material = ExtResource("4")
+layout_mode = 2
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Resolution:"
-valign = 1
 
 [node name="ResolutionButton" type="OptionButton" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_left = 495.0
-margin_top = 152.0
-margin_right = 1120.0
-margin_bottom = 309.0
+material = ExtResource("4")
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 7 )
-text = "1200x600"
-align = 1
+theme = ExtResource("7")
+alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_top = 324.0
-margin_right = 345.0
-margin_bottom = 449.0
+material = ExtResource("4")
+layout_mode = 2
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
+theme_override_fonts/font = ExtResource("8")
 text = "Fullscreen:"
-valign = 1
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/SettingsContainer/GridContainer"]
-material = ExtResource( 4 )
-margin_left = 495.0
-margin_top = 324.0
-margin_right = 1120.0
-margin_bottom = 449.0
+material = ExtResource("4")
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BackContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 628.0
-margin_right = 1200.0
-margin_bottom = 868.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_top = 83
-custom_constants/margin_bottom = 0
+theme_override_constants/margin_top = 83
+theme_override_constants/margin_bottom = 0
 
 [node name="BackButton" type="Button" parent="VBoxContainer/BackContainer"]
-material = ExtResource( 4 )
-margin_top = 83.0
-margin_right = 1200.0
-margin_bottom = 240.0
+material = ExtResource("4")
+layout_mode = 2
 text = "Save & Go Back"
 
 [connection signal="value_changed" from="VBoxContainer/SettingsContainer/GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]

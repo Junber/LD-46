@@ -1,63 +1,80 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://cjoy0koep2b07"]
 
-[ext_resource path="res://Resources/Animations/Squid/egg.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://VPSScenes/Home/UIContainer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_2.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Animations/Squid/baby.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://Resources/Animations/Squid/adult.tres" type="SpriteFrames" id=5]
-[ext_resource path="res://Resources/Animations/Squid/old.tres" type="SpriteFrames" id=6]
-[ext_resource path="res://VPSScripts/Home/TamagotchiHomeScreen.gd" type="Script" id=20]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_3.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_4.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_1.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_6.png" type="Texture" id=24]
-[ext_resource path="res://Resources/Graphics/Squid/Hatching/egg_crack_5.png" type="Texture" id=25]
+[ext_resource type="SpriteFrames" path="res://Resources/Animations/Squid/egg.tres" id="1"]
+[ext_resource type="PackedScene" path="res://VPSScenes/Home/UIContainer.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cv87hb7la1swr" path="res://Resources/Graphics/Squid/Hatching/egg_crack_2.png" id="3"]
+[ext_resource type="SpriteFrames" path="res://Resources/Animations/Squid/baby.tres" id="4"]
+[ext_resource type="SpriteFrames" path="res://Resources/Animations/Squid/adult.tres" id="5"]
+[ext_resource type="SpriteFrames" path="res://Resources/Animations/Squid/old.tres" id="6"]
+[ext_resource type="Script" path="res://VPSScripts/Home/TamagotchiHomeScreen.gd" id="20"]
+[ext_resource type="Texture2D" uid="uid://bqsqspe52yjwb" path="res://Resources/Graphics/Squid/Hatching/egg_crack_3.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://rui20qvpkyax" path="res://Resources/Graphics/Squid/Hatching/egg_crack_4.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://molkq8n05btt" path="res://Resources/Graphics/Squid/Hatching/egg_crack_1.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://bjvwm8i7ajp6s" path="res://Resources/Graphics/Squid/Hatching/egg_crack_6.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://d1662myc6kgde" path="res://Resources/Graphics/Squid/Hatching/egg_crack_5.png" id="25"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 3 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 24 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24")
+}],
 "loop": false,
-"name": "hatch",
+"name": &"hatch",
 "speed": 5.0
-} ]
+}]
 
 [node name="HomeScreen" type="Node2D"]
-script = ExtResource( 20 )
+script = ExtResource("20")
 
-[node name="UIContainer" parent="." instance=ExtResource( 2 )]
-margin_bottom = 17.0
+[node name="UIContainer" parent="." instance=ExtResource("2")]
+offset_bottom = 17.0
 
 [node name="NormalSprites" type="Node2D" parent="."]
 
-[node name="EggSprite" type="AnimatedSprite" parent="NormalSprites"]
-position = Vector2( 36, 49 )
-frames = ExtResource( 1 )
-animation = "idle"
-playing = true
+[node name="EggSprite" type="AnimatedSprite2D" parent="NormalSprites"]
+position = Vector2(36, 49)
+sprite_frames = ExtResource("1")
+animation = &"idle"
 
-[node name="BabySprite" type="AnimatedSprite" parent="NormalSprites"]
+[node name="BabySprite" type="AnimatedSprite2D" parent="NormalSprites"]
 visible = false
-position = Vector2( 36, 44 )
-frames = ExtResource( 4 )
-animation = "idle"
+position = Vector2(36, 44)
+sprite_frames = ExtResource("4")
+animation = &"idle"
 
-[node name="AdultSprite" type="AnimatedSprite" parent="NormalSprites"]
+[node name="AdultSprite" type="AnimatedSprite2D" parent="NormalSprites"]
 visible = false
-position = Vector2( 37, 45 )
-frames = ExtResource( 5 )
-animation = "idle"
+position = Vector2(37, 45)
+sprite_frames = ExtResource("5")
+animation = &"idle"
 
-[node name="OldSprite" type="AnimatedSprite" parent="NormalSprites"]
+[node name="OldSprite" type="AnimatedSprite2D" parent="NormalSprites"]
 visible = false
-position = Vector2( 37, 45 )
-frames = ExtResource( 6 )
-animation = "idle"
+position = Vector2(37, 45)
+sprite_frames = ExtResource("6")
+animation = &"idle"
 
-[node name="HatchSprite" type="AnimatedSprite" parent="."]
+[node name="HatchSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2( 32, 49 )
-frames = SubResource( 1 )
-animation = "hatch"
+position = Vector2(32, 49)
+sprite_frames = SubResource("1")
+animation = &"hatch"
 
 [node name="AnimationTimer" type="Timer" parent="."]
 one_shot = true

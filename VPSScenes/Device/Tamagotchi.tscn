@@ -1,82 +1,69 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://nt84o5psyt87"]
 
-[ext_resource path="res://VPSScenes/Device/TamagotchiScreen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://VPSScripts/Device/ButtonAudioPlayer.gd" type="Script" id=2]
-[ext_resource path="res://VPSScenes/Device/TextureButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/Graphics/VPS/shading_overlay.png" type="Texture" id=4]
-[ext_resource path="res://VPSScripts/Device/Tamagotchi.gd" type="Script" id=6]
-[ext_resource path="res://Resources/Graphics/VPS/vps_unit.png" type="Texture" id=7]
+[ext_resource type="PackedScene" uid="uid://nisyg6688c2b" path="res://VPSScenes/Device/TamagotchiScreen.tscn" id="1"]
+[ext_resource type="Script" path="res://VPSScripts/Device/ButtonAudioPlayer.gd" id="2"]
+[ext_resource type="PackedScene" path="res://VPSScenes/Device/TextureButton.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://c0yeujsv4p3cf" path="res://Resources/Graphics/VPS/shading_overlay.png" id="4"]
+[ext_resource type="Script" path="res://VPSScripts/Device/Tamagotchi.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://dxvr2fhabnoe4" path="res://Resources/Graphics/VPS/vps_unit.png" id="7"]
 
 [node name="Tamagotchi" type="Node2D"]
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_vertical_guides_": [  ]
-}
+script = ExtResource("6")
 needGain = 20.0
 
-[node name="Screen" parent="." instance=ExtResource( 1 )]
+[node name="Screen" parent="." instance=ExtResource("1")]
 
 [node name="Frame" type="TextureRect" parent="."]
-margin_right = 72.0
-margin_bottom = 87.0
-texture = ExtResource( 7 )
-expand = true
+offset_right = 72.0
+offset_bottom = 87.0
+texture = ExtResource("7")
+expand_mode = 1
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScreenShine" type="TextureRect" parent="."]
-margin_right = 72.0
-margin_bottom = 87.0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 72.0
+offset_bottom = 87.0
+texture = ExtResource("4")
 
-[node name="FoodButton" parent="." instance=ExtResource( 3 )]
-margin_left = 11.1712
-margin_top = 79.0614
-margin_right = 16.1712
-margin_bottom = 84.0614
-focus_mode = 0
+[node name="FoodButton" parent="." instance=ExtResource("3")]
+offset_left = 11.1712
+offset_top = 79.0614
+offset_right = 16.1712
+offset_bottom = 84.0614
 size_flags_horizontal = 3
 size_flags_vertical = 3
-enabled_focus_mode = 0
-
-[node name="SleepButton" parent="." instance=ExtResource( 3 )]
-margin_left = 25.9398
-margin_top = 79.1765
-margin_right = 30.9398
-margin_bottom = 84.1765
 focus_mode = 0
+
+[node name="SleepButton" parent="." instance=ExtResource("3")]
+offset_left = 25.9398
+offset_top = 79.1765
+offset_right = 30.9398
+offset_bottom = 84.1765
 size_flags_horizontal = 3
 size_flags_vertical = 3
-enabled_focus_mode = 0
-
-[node name="PlayButton" parent="." instance=ExtResource( 3 )]
-margin_left = 41.2678
-margin_top = 79.1902
-margin_right = 46.2678
-margin_bottom = 84.1902
 focus_mode = 0
+
+[node name="PlayButton" parent="." instance=ExtResource("3")]
+offset_left = 41.2678
+offset_top = 79.1902
+offset_right = 46.2678
+offset_bottom = 84.1902
 size_flags_horizontal = 3
 size_flags_vertical = 3
-enabled_focus_mode = 0
-
-[node name="ExtraButton" parent="." instance=ExtResource( 3 )]
-margin_left = 55.6821
-margin_top = 79.15
-margin_right = 60.6821
-margin_bottom = 84.15
 focus_mode = 0
+
+[node name="ExtraButton" parent="." instance=ExtResource("3")]
+offset_left = 55.6821
+offset_top = 79.15
+offset_right = 60.6821
+offset_bottom = 84.15
 size_flags_horizontal = 3
 size_flags_vertical = 3
-enabled_focus_mode = 0
+focus_mode = 0
 
 [node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="."]
-bus = "SoundEffects"
-script = ExtResource( 2 )
+bus = &"SoundEffects"
+script = ExtResource("2")
 
 [connection signal="button_pressed" from="." to="ButtonAudioPlayer" method="_on_Tamagotchi_button_pressed"]
 [connection signal="eat" from="." to="Screen" method="_on_Tamagotchi_eat"]

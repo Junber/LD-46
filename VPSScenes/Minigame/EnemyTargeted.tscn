@@ -2,10 +2,10 @@
 
 [ext_resource path="res://VPSScenes/Minigame/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://VPSScripts/Minigame/EnemyTargeted.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Graphics/Minigame/Enemies/enemy_2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Graphics/Minigame/Enemies/enemy_2.png" type="Texture2D" id=3]
 
 [node name="Enemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource( 3 )

@@ -1,0 +1,22 @@
+
+	Migrate to Godot 4 (among other improvements, this should fix the audio issues in the web version)
+	Make everything in tamagotchi align to its larger pixels
+	Make text rendering look less out of place
+	Replace ugly italics font with outlined text
+	Sort save files and disable misleading tool tips
+	Tweak new chapter sound
+	Disable unavailable options in web version
+	Make full screen default on downloadable version
+	Auto full screen on first input in HTML5 and reenter full screen on new input after exiting full screen
+	New loading screen
+	Fix choices staying onscreen when loading save file
+	Make squid deny interactions when need is visually completely satisfied
+	Align bullets more to player in squid minigame
+	Add M as additional button to open the menu (This makes it work in browsers without exiting full screen)
+	Add variation to menu button sounds
+	Fix option being duplicated in resolution selection occasionally
+	Fix volume slider appearance
+	Prevent tamagotchi buttons from playing sounds before it is unlocked
+	Auto-advance from chapter transitions
+	Make chapter transitions skippable
+	Various other visual improvements

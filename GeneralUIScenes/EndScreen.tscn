@@ -1,209 +1,182 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bwupaaxy5qe4g"]
 
-[ext_resource path="res://Resources/Graphics/Backgrounds/character view.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Graphics/GeneralUI/screen_border.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Graphics/GeneralUI/end2.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Graphics/GeneralUI/end1.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Fonts/joystix.tres" type="DynamicFont" id=5]
-[ext_resource path="res://GeneralUIScripts/EndScreen.gd" type="Script" id=6]
-[ext_resource path="res://Resources/Fonts/joystix.monospace.ttf" type="DynamicFontData" id=7]
+[ext_resource type="Texture2D" uid="uid://c1x24y3iqgf82" path="res://Resources/Graphics/Backgrounds/character view.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cy880n3tpuhj5" path="res://Resources/Graphics/GeneralUI/screen_border.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://xsbcopx7s5rp" path="res://Resources/Graphics/GeneralUI/end2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://o4jg74u04lfi" path="res://Resources/Graphics/GeneralUI/end1.png" id="4"]
+[ext_resource type="FontFile" path="res://Resources/Fonts/joystix.tres" id="5"]
+[ext_resource type="Script" path="res://GeneralUIScripts/EndScreen.gd" id="6"]
+[ext_resource type="FontFile" uid="uid://dia0bs2oqfg7c" path="res://Resources/Fonts/joystix.monospace.ttf" id="7"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
-
-[sub_resource type="DynamicFont" id=2]
-size = 60
-font_data = ExtResource( 7 )
+}]
 
 [node name="EndScreen" type="TextureRect"]
-pause_mode = 2
-margin_right = 1200.0
-margin_bottom = 675.0
-texture = ExtResource( 1 )
-expand = true
-script = ExtResource( 6 )
-__meta__ = {
-"_editor_description_": ""
-}
+process_mode = 3
+offset_right = 1200.0
+offset_bottom = 675.0
+texture = ExtResource("1")
+expand_mode = 1
+script = ExtResource("6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 240.0
-margin_bottom = 135.0
-rect_scale = Vector2( 5, 5 )
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 135.0
+scale = Vector2(5, 5)
+texture = ExtResource("2")
 
 [node name="EatingSquid" type="Node2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="EatingSquid"]
-position = Vector2( 592.378, 436.371 )
-scale = Vector2( 7, 7 )
-frames = SubResource( 1 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EatingSquid"]
+position = Vector2(592.378, 436.371)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("1")
 frame = 1
-playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="EatingSquid"]
-margin_left = 211.671
-margin_top = 95.0
-margin_right = 1020.67
-margin_bottom = 199.0
-custom_fonts/normal_font = SubResource( 2 )
-text = "To Keep It Alive"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 211.671
+offset_top = 95.0
+offset_right = 1020.67
+offset_bottom = 199.0
+theme_override_fonts/normal_font = ExtResource("5")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center]To Keep It Alive"
 
 [node name="Credits" type="Node2D" parent="."]
 visible = false
 
 [node name="RichTextLabel11" type="RichTextLabel" parent="Credits"]
-margin_left = 49.0786
-margin_top = 29.4125
-margin_right = 1193.08
-margin_bottom = 113.413
+offset_left = 49.0786
+offset_top = 29.4125
+offset_right = 1193.08
+offset_bottom = 113.413
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Thank You For Playing!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
-margin_left = 128.577
-margin_top = 259.292
-margin_right = 748.577
-margin_bottom = 343.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 128.577
+offset_top = 259.292
+offset_right = 748.577
+offset_bottom = 343.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Programming"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Credits"]
-margin_left = 520.923
-margin_top = 259.292
-margin_right = 1662.92
-margin_bottom = 486.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 520.923
+offset_top = 259.292
+offset_right = 1662.92
+offset_bottom = 486.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Junber
 strawberriesandcheese"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Credits"]
-margin_left = 128.577
-margin_top = 359.292
-margin_right = 748.577
-margin_bottom = 443.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 128.577
+offset_top = 359.292
+offset_right = 748.577
+offset_bottom = 443.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Story"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Credits"]
-margin_left = 520.923
-margin_top = 359.292
-margin_right = 1662.92
-margin_bottom = 586.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 520.923
+offset_top = 359.292
+offset_right = 1662.92
+offset_bottom = 586.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "NonSans"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="Credits"]
-margin_left = 128.577
-margin_top = 159.292
-margin_right = 748.577
-margin_bottom = 243.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 128.577
+offset_top = 159.292
+offset_right = 748.577
+offset_bottom = 243.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Art"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="Credits"]
-margin_left = 520.923
-margin_top = 159.292
-margin_right = 1662.92
-margin_bottom = 386.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 520.923
+offset_top = 159.292
+offset_right = 1662.92
+offset_bottom = 386.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Sturo"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel8" type="RichTextLabel" parent="Credits"]
-margin_left = 128.577
-margin_top = 459.292
-margin_right = 748.577
-margin_bottom = 543.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 128.577
+offset_top = 459.292
+offset_right = 748.577
+offset_bottom = 543.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Music"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="Credits"]
-margin_left = 520.923
-margin_top = 459.292
-margin_right = 1662.92
-margin_bottom = 686.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 520.923
+offset_top = 459.292
+offset_right = 1662.92
+offset_bottom = 686.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Steamdr4gon"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel10" type="RichTextLabel" parent="Credits"]
-margin_left = 128.577
-margin_top = 559.292
-margin_right = 748.577
-margin_bottom = 643.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 128.577
+offset_top = 559.292
+offset_right = 748.577
+offset_bottom = 643.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "Scripting"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel9" type="RichTextLabel" parent="Credits"]
-margin_left = 520.923
-margin_top = 559.292
-margin_right = 1662.92
-margin_bottom = 786.292
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 520.923
+offset_top = 559.292
+offset_right = 1662.92
+offset_bottom = 786.292
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+theme_override_fonts/normal_font = ExtResource("7")
+theme_override_font_sizes/normal_font_size = 60
 text = "etfactaestnox"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="gui_input" from="." to="." method="_on_EndScreen_gui_input"]

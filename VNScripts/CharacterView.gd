@@ -10,29 +10,29 @@ var characterMap = {
 	"christine happy": preload("res://Resources/Animations/Characters/Christine/ChristineHappy.tres"),
 	"christine sad": preload("res://Resources/Animations/Characters/Christine/ChristineSad.tres"),
 	"christine surprised": preload("res://Resources/Animations/Characters/Christine/ChristineSurprised.tres"),
-	
+
 	"michael": preload("res://Resources/Animations/Characters/Michael/Michael.tres"),
 	"michael happy": preload("res://Resources/Animations/Characters/Michael/MichaelHappy.tres"),
 	"michael sad": preload("res://Resources/Animations/Characters/Michael/MichaelSad.tres"),
 	"michael surprised": preload("res://Resources/Animations/Characters/Michael/MichaelSurprised.tres"),
-	
+
 	"michael old": preload("res://Resources/Animations/Characters/MichaelOld/MichaelOld.tres"),
 	"michael old happy": preload("res://Resources/Animations/Characters/MichaelOld/MichaelOldHappy.tres"),
 	"michael old sad": preload("res://Resources/Animations/Characters/MichaelOld/MichaelOldSad.tres"),
 	"michael old surprised": preload("res://Resources/Animations/Characters/MichaelOld/MichaelOldSurprised.tres"),
-	
+
 	"sarah": preload("res://Resources/Animations/Characters/Sarah/Sarah.tres"),
 	"sarah happy": preload("res://Resources/Animations/Characters/Sarah/SarahHappy.tres"),
 	"sarah sad": preload("res://Resources/Animations/Characters/Sarah/SarahSad.tres"),
 	"sarah surprised": preload("res://Resources/Animations/Characters/Sarah/SarahSurprised.tres"),
-	
+
 	"sarah old": preload("res://Resources/Animations/Characters/SarahOld/SarahOld.tres"),
 	"sarah old happy": preload("res://Resources/Animations/Characters/SarahOld/SarahOldHappy.tres"),
 	"sarah old sad": preload("res://Resources/Animations/Characters/SarahOld/SarahOldSad.tres"),
 	"sarah old surprised": preload("res://Resources/Animations/Characters/SarahOld/SarahOldSurprised.tres"),
 }
 
-onready var positions = [
+@onready var positions = [
 	[
 		#positions[0][0]
 		$"1CharacterPosition1".position
@@ -45,7 +45,7 @@ onready var positions = [
 	]
 ]
 
-onready var backgroundMap = {
+@onready var backgroundMap = {
 	"beach": $BackgroundBeach,
 	"deep sea creatures": $BackgroundDeepSeaCreatures,
 	"living room night": $BackgroundLivingRoomNight,
@@ -60,13 +60,13 @@ onready var backgroundMap = {
 	"shallow sea creatures": $BackgroundShallowSeaCreatures,
 }
 
-onready var foremostBackground = $BackgroundShallowSeaCreatures
+@onready var foremostBackground = $BackgroundShallowSeaCreatures
 
-export (String) var startingBackground = "field"
+@export var startingBackground := "field"
 
 # Used only for saving/loading purposes
-var currentCharacterNames setget set_currentCharacterNames, get_currentCharacterNames
-var backgroundName setget set_backgroundName, get_backgroundName
+var currentCharacterNames : get = get_currentCharacterNames, set = set_currentCharacterNames
+var backgroundName : get = get_backgroundName, set = set_backgroundName
 
 func _ready():
 	change_background(startingBackground)
@@ -81,7 +81,7 @@ func get_currentCharacterNames():
 	for characterName in currentCharacters:
 		currentCharacterNames.append(characterName)
 	return currentCharacterNames
-	
+
 func set_currentCharacterNames(newCharacterNames):
 	remove_characters()
 	add_characters(newCharacterNames)
@@ -91,7 +91,7 @@ func get_backgroundName():
 		if backgroundMap[potentialBackgroundName].visible:
 			return potentialBackgroundName
 	return "black"
-	
+
 func set_backgroundName(newBackgroundName):
 	change_background(newBackgroundName)
 
@@ -101,7 +101,7 @@ func add_characters(listOfCharacters):
 		if character.begins_with("lucas"):
 			listOfCharacters.erase(character)
 			break
-	
+
 	for index in range(listOfCharacters.size()):
 		var character = add_character(listOfCharacters[index], positions[listOfCharacters.size() - 1][index])
 		if index % 2 == 1:
@@ -116,12 +116,12 @@ func change_background(newBackground: String):
 	backgroundMap[newBackground].visible = true
 
 func flip_character(character):
-	character.get_node("Sprite").flip_h = true
+	character.get_node("Sprite2D").flip_h = true
 
-func add_character(characterName: String, position):
-	var newCharacter = characterScene.instance()
-	newCharacter.position = position
-	add_child_below_node(foremostBackground, newCharacter)
+func add_character(characterName: String, character_position):
+	var newCharacter = characterScene.instantiate()
+	newCharacter.position = character_position
+	foremostBackground.add_sibling(newCharacter)
 	newCharacter.set_sprite_frames(characterMap[characterName])
 	currentCharacters[characterName] = newCharacter
 	return newCharacter
@@ -147,12 +147,12 @@ func _on_DialogManager_end_talking():
 			currentCharacters[characterName].stop_animating()
 
 
-func _on_DialogManager_start_talking(name):
-	if name.length() != 0:
-		talkingCharacterName = name.to_lower()
+func _on_DialogManager_start_talking(character_name):
+	if character_name.length() != 0:
+		talkingCharacterName = character_name.to_lower()
 		if talkingCharacterName == "mom":
 			talkingCharacterName = "christine"
-	
+
 	for characterName in currentCharacters:
 		if characterName.begins_with(talkingCharacterName):
 			currentCharacters[characterName].start_animating()

@@ -1,7 +1,7 @@
 extends Node2D
 signal new_chapter(number, subtitle)
 
-export(int) var start_resolution = 1
+@export var start_resolution: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,9 +24,8 @@ func hide_screen(screen):
 	screen.go_away()
 
 func restart_game():
-# warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
 	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func quit_game():
 	get_tree().quit()
@@ -108,12 +107,6 @@ func _on_LoadingScreen_loadButton_pressed(fileName):
 func _on_MenuScreen_SaveButton_pressed():
 	show_screen($SavingScreen)
 
-func _on_SavingScreen_backButton_pressed():
-	$SavingScreen.go_away()
-
-func _on_SavingScreen_save(fileName):
-	$SaveManager.save_game(fileName)
-
 func _on_MenuScreen_LoadButton_pressed():
 	show_screen($LoadingScreen)
 
@@ -128,3 +121,9 @@ func _on_StartMenuScreen_DeleteButton_pressed():
 
 func _on_MenuScreen_DeleteButton_pressed():
 	show_screen($SaveDeletingScreen)
+
+func _on_saving_screen_back_button_pressed() -> void:
+	$SavingScreen.go_away()
+
+func _on_saving_screen_save(fileName: Variant) -> void:
+	$SaveManager.save_game(fileName)

@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Graphics/Characters/Christine/christine_suprised.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Graphics/Characters/Christine/christine_suprised_talk.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Characters/Christine/christine_suprised.png" type="Texture2D" id=1]
+[ext_resource path="res://Resources/Graphics/Characters/Christine/christine_suprised_talk.png" type="Texture2D" id=2]
 
 [resource]
 animations = [ {
